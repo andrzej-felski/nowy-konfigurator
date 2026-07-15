@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Konfigurator oferty</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="header">
+    <img src="img/logo.png" alt="Logo">
+</header>
+<main class="main-layout">
+    <section class="left-column">
+        <div id="summary">
+            <h3>
+                Twoja konfiguracja
+            </h3>
+            <div id="summaryContent">
+				-
+            </div>
+        </div>
+        <div id="wizard">
+            <div id="stepContent">
+            </div>
+			<div id="navigation">
+				<button id="backButton">← Cofnij</button>
+				<button id="clearButton">Wyczyść</button>
+				<button id="nextButton">Dalej →</button>
+			</div>
+        </div>
+    </section>
+    <aside id="cartSection">
+        <h2>
+            Wybrane pakiety
+        </h2>
+        <div id="cart">
+        </div>
+    </aside>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script src="fonts/Roboto-normal.js"></script>
+<script src="fonts/Roboto-bold.js"></script>
+<script src="js/data.js"></script>
+<script src="js/calculator.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

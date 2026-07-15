@@ -1,0 +1,272 @@
+body {
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle, #0284F8 0%, #0365C6 100%);
+    margin:0;
+	padding:0 30px 30px 30px;
+}
+
+.header {
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px 0;
+}
+
+.header img {
+    max-width:300px;
+    height:auto;
+}
+
+.main-layout {
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+    gap:25px;
+    max-width:1920px;
+    margin:auto;
+}
+
+.left-column {
+    display:flex;
+    flex-direction:column;
+	align-self: start;
+    gap:20px;
+    background:white;
+    border-radius:12px;
+    padding:25px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+#cartSection {
+    background:white;
+    border-radius:12px;
+    padding:25px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+#summary {
+    position:sticky;
+}
+
+#summaryContent {
+    color:#444;
+}
+
+#wizard {
+	display:flex;
+	flex-direction: column;
+	height:100%;
+	border-top: 1px solid #999999; 
+}
+
+#stepContent {
+	flex: 1;
+    margin-bottom: 20px;
+}
+
+#navigation {
+    display:flex;
+    justify-content:space-between;
+	margin-top: auto;
+}
+
+button {
+    background:#0365C6;
+    color:white;
+    border:0;
+    border-radius:8px;
+    padding:12px 20px;
+    cursor:pointer;
+}
+
+button:hover {
+    background:#0284F8;
+}
+
+button:disabled {
+    background:#aaa;
+}
+
+#cartSection {
+    position:sticky;
+    top:20px;
+    height:max-content;
+}
+
+.choice-list {
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.choice-card {
+    display:flex;
+    align-items:center;
+    gap:15px;
+    width:auto;
+    padding:15px 20px;
+    background:white;
+    border:2px solid #ddd;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.choice-card:hover {
+    border-color:#0284F8;
+}
+
+.choice-card:has(input:checked) {
+    background:#eff6ff;
+    border-color:#0284F8;
+}
+
+.choice-card input {
+    width:20px;
+    height:20px;
+}
+
+.choice-name {
+    font-weight:500;
+}
+
+.option-button {
+    background:white;
+    color:#222;
+    border:2px solid #ddd;
+    padding:15px 20px;
+    border-radius:12px;
+    margin:8px;
+    transition:.2s;
+}
+
+.option-button:hover {
+    border-color:#2563eb;
+}
+
+.option-button.selected {
+    background:#2563eb;
+    color:white;
+    border-color:#2563eb;
+}
+
+.option-card {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    width:auto;
+    padding:15px 20px;
+    background:white;
+    border:2px solid #ddd;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.option-card:hover {
+    border-color:#2563eb;
+}
+
+.option-card:has(input:checked) {
+    background:#eff6ff;
+    border-color:#2563eb;
+}
+
+.option-card input {
+    width:20px;
+    height:20px;
+}
+
+.option-disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.option-disabled .option-name,
+.option-disabled .option-price {
+    color: #777;
+}
+
+.option-disabled input {
+    cursor: not-allowed;
+}
+
+.global-options {
+    width: 100%;
+}
+
+.global-options .option-card {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.option-name {
+    flex:1;
+    font-weight:500;
+}
+
+.option-price {
+    color:#2563eb;
+    font-weight:bold;
+    text-align:right;
+    font-size:14px;
+}
+
+.cart-item {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    cursor: pointer;
+    background: white;
+    list-style: none;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    transition: .2s;
+}
+
+.cart-header:hover {
+    border-color: #2563eb;
+}
+
+.cart-header::-webkit-details-marker {
+    display: none;
+}
+
+.cart-title {
+    font-weight: bold;
+}
+
+.cart-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.cart-content {
+    padding: 0 15px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .25s ease, padding .25s ease;
+}
+
+.cart-item.open .cart-content {
+    padding: 15px;
+}
+
+@media(max-width:900px){
+    .main-layout {
+        grid-template-columns:1fr;
+    }
+
+    #cartSection {
+        position:static;
+    }
+}
