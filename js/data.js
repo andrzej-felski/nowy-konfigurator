@@ -1694,6 +1694,382 @@ const catalog = {
 								},
 							]
 						},
+						{ id: "osiedlowa", name: "Oferta OSIEDLOWA",
+							globalFees:[
+								{
+									id:"remote_support",
+									name:"Wsparcie zdalne usługi",
+									priceSchedule:[
+										{ from:1, to:24, price:10.19 }
+									]
+								},
+								{
+									id:"telecom_fee",
+									name:"Opłata telekomunikacyjna",
+									priceSchedule:[
+										{ from:1, to:24, price:3.69 }
+									]
+								}
+							],
+							internetPackages: [
+								{ id: "internet_swiatlowodowy_300", name: "Internet 300 Mb/s",
+									 components: [
+										{ name: "Internet 300 Mb/s", 
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 13.14 }
+											]
+										}
+									],
+									options: [
+										{ id: "modem", name: "Modem",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 4.99 }
+											]
+										}
+									],
+								},
+								{ id: "internet_swiatlowodowy_650", name: "Internet 650 Mb/s",
+									components: [ 
+										{ name: "Internet 650 Mb/s",
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 23.14 }
+											]
+										}
+									],
+									options: [
+										{ id: "modem", name: "Modem",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 4.99 }
+											]
+										}
+									],
+								},
+								{ id: "internet_swiatlowodowy_800", name: "Internet 800 Mb/s",
+									 components: [
+										{ name: "Internet 800 Mb/s", 
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 33.14 }
+											]
+										}
+									],
+									options: [
+										{ id: "modem", name: "Modem",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 4.99 }
+											]
+										}
+									],
+								},
+							],
+							tvPackages: [
+								{ id: "blue_box", name: "Blue Box",
+									 components: [
+										{ name: "Blue Box", 
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 30.98 }
+											]
+										}
+									],
+									options: [
+										{ id: "dekoder", name: "Dekoder",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
+										{ id:"smart_tv", name:"SMART TV",
+											selectedByDefault: false,
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 4.99 }
+											]
+										},
+										{ id:"dekoder_smart_tv", name:"Dekoder SMART TV", dependsOn:"smart_tv",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 14.99 }
+											]
+										},
+										{ id:"nieliniowe_smart_tv", name:"Dostęp do usług nieliniowych SMART TV", dependsOn:"smart_tv",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 8.28 },
+											]
+										},
+									],
+								},
+								{ id: "m_box", name: "M BOX",
+									 components: [
+										{ name: "M BOX", 
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 46.98 }
+											]
+										}
+									],
+									options: [
+										{ id: "dekoder", name: "Dekoder",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
+										{ id:"smart_tv", name:"SMART TV",
+											selectedByDefault: false,
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 4.99 }
+											]
+										},
+										{ id:"dekoder_smart_tv", name:"Dekoder SMART TV", dependsOn:"smart_tv",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 14.99 }
+											]
+										},
+										{ id:"nieliniowe_smart_tv", name:"Dostęp do usług nieliniowych SMART TV", dependsOn:"smart_tv",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 8.28 },
+											]
+										},
+										{ id:"eleven_sports", name:"Eleven Sports",
+											selectedByDefault: false,
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 14.90 },
+											]
+										},
+										{ id:"cinemax", name:"Cinemax",
+											selectedByDefault: false,
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 10.00 },
+											]
+										},
+										{ id:"canal_seriale", name:"CANAL+ Seriale i Filmy", group:"canal",
+											selectedByDefault: false,
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 25.00 },
+											]
+										},
+										{ id:"canal_sport", name:"CANAL+ Super Sport", group:"canal",
+											selectedByDefault:false,
+											activationFee: 1.23,
+											priceSchedule:[
+												{ from:1, to:24, price:65.00 }
+											]
+										},
+										{ id:"hbo_hd", name:"HBO HD",
+											selectedByDefault: false,
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 38.00 },
+											]
+										},
+										{ id:"hbo_hd_max", name:"HBO Max", dependsOn:"hbo_hd",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 1.90 },
+											]
+										},
+										{ id:"hbo_max", name:"HBO Max (solo)",
+											selectedByDefault: false,
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 29.90 },
+											]
+										},
+										{ id:"tv_republika", name:"TV Republika",
+											selectedByDefault: false,
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 5.40 },
+											]
+										},
+										{ id:"eurosport", name:"Eurosport",
+											selectedByDefault: false,
+											activationFee: 0.00,
+											priceSchedule: [
+												{ from: 1, to: 1, price: 0.00 },
+												{ from: 2, to: 24, price: 10.00 },
+											]
+										},
+										{ id:"eurosport_cinemax", name:"Eurosport + Cinemax",
+											selectedByDefault: false,
+											activationFee: 0.00,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 17.00 },
+											]
+										},
+										{ id:"eurosport_eleven", name:"Eurosport + Eleven Sports",
+											selectedByDefault: false,
+											activationFee: 0.00,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 20.00 },
+											]
+										},
+										{ id:"pakiet_sport", name:"Pakiet SPORT",
+											selectedByDefault: false,
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 15.54 },
+											]
+										},
+										{ id:"pakiet_rozrywka", name:"Pakiet ROZRYWKA",
+											selectedByDefault: false,
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 10.36 },
+											]
+										},
+										{ id:"pakiet_odkrywcy", name:"Pakiet ODKRYWCY",
+											selectedByDefault: false,
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 20.72 },
+											]
+										},
+										{ id:"pakiet_bajki", name:"Pakiet BAJKI",
+											selectedByDefault: false,
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 10.36 },
+											]
+										},
+										{ id:"pakiet_familijny", name:"Pakiet FAMILIJNY",
+											selectedByDefault: false,
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 15.54 },
+											]
+										},
+									],
+								},
+								{ id: "l_box", name: "L BOX",
+									 components: [
+										{ name: "L BOX", 
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 66.98 }
+											]
+										}
+									],
+									options: [
+										{ id: "dekoder", name: "Dekoder",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
+										{ id:"smart_tv", name:"SMART TV",
+											selectedByDefault: false,
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 4.99 }
+											]
+										},
+										{ id:"dekoder_smart_tv", name:"Dekoder SMART TV", dependsOn:"smart_tv",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 14.99 }
+											]
+										},
+										{ id:"nieliniowe_smart_tv", name:"Dostęp do usług nieliniowych SMART TV", dependsOn:"smart_tv",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 8.28 },
+											]
+										},
+										{ id:"eleven_sports", name:"Eleven Sports",
+											selectedByDefault: false,
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 14.90 },
+											]
+										},
+										{ id:"cinemax", name:"Cinemax",
+											selectedByDefault: false,
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 10.00 },
+											]
+										},
+										{ id:"canal_seriale", name:"CANAL+ Seriale i Filmy", group:"canal",
+											selectedByDefault: false,
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 25.00 },
+											]
+										},
+										{ id:"canal_sport", name:"CANAL+ Super Sport", group:"canal",
+											selectedByDefault:false,
+											activationFee: 1.23,
+											priceSchedule:[
+												{ from:1, to:24, price:65.00 }
+											]
+										},
+										{ id:"hbo_hd", name:"HBO HD",
+											selectedByDefault: false,
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 38.00 },
+											]
+										},
+										{ id:"hbo_hd_max", name:"HBO Max", dependsOn:"hbo_hd",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 1.90 },
+											]
+										},
+										{ id:"hbo_max", name:"HBO Max (solo)",
+											selectedByDefault: false,
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 29.90 },
+											]
+										},
+										{ id:"tv_republika", name:"TV Republika",
+											selectedByDefault: false,
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 5.40 },
+											]
+										},
+										{ id:"eurosport", name:"Eurosport",
+											selectedByDefault: false,
+											activationFee: 0.00,
+											priceSchedule: [
+												{ from: 1, to: 1, price: 0.00 },
+												{ from: 2, to: 24, price: 10.00 },
+											]
+										},
+										{ id:"eurosport_cinemax", name:"Eurosport + Cinemax",
+											selectedByDefault: false,
+											activationFee: 0.00,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 17.00 },
+											]
+										},
+										{ id:"eurosport_eleven", name:"Eurosport + Eleven Sports",
+											selectedByDefault: false,
+											activationFee: 0.00,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 20.00 },
+											]
+										},
+									],
+								},
+							]
+						},
 						{ id: "standard", name: "Super Box",
 							globalFees:[
 								{
@@ -4604,6 +4980,274 @@ const catalog = {
 		},
 		{ id: "internet_swiatlowodowy", name: "Internet światłowodowy",  
 			contracts: [
+				{ id: "3", type: "fixed", months: 12, name: "3 miesiące", 
+					offers: [
+						{ id: "sezonowy", name: "Internet Sezonowy",
+							globalFees:[
+								{ id:"remote_support", name:"Wsparcie zdalne usługi",
+									priceSchedule:[
+										{ from:1, to:3, price:10.19 }
+									]
+								},
+								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
+									priceSchedule:[
+										{ from:1, to:3, price:4.99 }
+									]
+								}
+							],
+							packages: [
+								{ id: "internet_swiatlowodowy_50", name: "Internet 50 Mb/s",
+									 components: [
+										{ name: "Internet 50 Mb/s", 
+											activationFee: 69.00,
+											priceSchedule: [
+												{ from: 1, to: 3, price: 69.00 },
+												{ from: 4, to: 12, price: 10.00 }
+											]
+										}
+									],
+									options: [
+										{ id: "modem", name: "Modem",
+											selectedByDefault: true,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 4.99 }
+											]
+										}
+									],
+								},
+								{ id: "internet_swiatlowodowy_100", name: "Internet 100 Mb/s",
+									 components: [
+										{ name: "Internet 100 Mb/s", 
+											activationFee: 69.00,
+											priceSchedule: [
+												{ from: 1, to: 3, price: 79.00 },
+												{ from: 4, to: 12, price: 10.00 }
+											]
+										}
+									],
+									options: [
+										{ id: "modem", name: "Modem",
+											selectedByDefault: true,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 4.99 }
+											]
+										}
+									],
+								},
+								{ id: "internet_swiatlowodowy_150", name: "Internet 150 Mb/s",
+									 components: [
+										{ name: "Internet 150 Mb/s", 
+											activationFee: 69.00,
+											priceSchedule: [
+												{ from: 1, to: 3, price: 69.00 },
+												{ from: 4, to: 12, price: 10.00 }
+											]
+										}
+									],
+									options: [
+										{ id: "modem", name: "Modem",
+											selectedByDefault: true,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 4.99 }
+											]
+										}
+									],
+								},
+								{ id: "internet_swiatlowodowy_300", name: "Internet 300 Mb/s",
+									 components: [
+										{ name: "Internet 300 Mb/s", 
+											activationFee: 69.00,
+											priceSchedule: [
+												{ from: 1, to: 3, price: 79.00 },
+												{ from: 4, to: 12, price: 10.00 }
+											]
+										}
+									],
+									options: [
+										{ id: "modem", name: "Modem",
+											selectedByDefault: true,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 4.99 }
+											]
+										}
+									],
+								},
+								{ id: "internet_swiatlowodowy_650", name: "Internet 650 Mb/s",
+									 components: [
+										{ name: "Internet 650 Mb/s", 
+											activationFee: 69.00,
+											priceSchedule: [
+												{ from: 1, to: 3, price: 89.00 },
+												{ from: 4, to: 12, price: 10.00 }
+											]
+										}
+									],
+									options: [
+										{ id: "modem", name: "Modem",
+											selectedByDefault: true,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 4.99 }
+											]
+										}
+									],
+								},
+								{ id: "internet_swiatlowodowy_800", name: "Internet 800 Mb/s",
+									 components: [
+										{ name: "Internet 800 Mb/s", 
+											activationFee: 69.00,
+											priceSchedule: [
+												{ from: 1, to: 3, price: 99.00 },
+												{ from: 4, to: 12, price: 10.00 }
+											]
+										}
+									],
+									options: [
+										{ id: "modem", name: "Modem",
+											selectedByDefault: true,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 4.99 }
+											]
+										}
+									],
+								},
+							]
+						}
+					]
+				},
+				{ id: "5", type: "fixed", months: 12, name: "5 miesięcy", 
+					offers: [
+						{ id: "sezonowy", name: "Internet Sezonowy",
+							globalFees:[
+								{ id:"remote_support", name:"Wsparcie zdalne usługi",
+									priceSchedule:[
+										{ from:1, to:5, price:10.19 }
+									]
+								},
+								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
+									priceSchedule:[
+										{ from:1, to:5, price:4.99 }
+									]
+								}
+							],
+							packages: [
+								{ id: "internet_swiatlowodowy_50", name: "Internet 50 Mb/s",
+									 components: [
+										{ name: "Internet 50 Mb/s", 
+											activationFee: 69.00,
+											priceSchedule: [
+												{ from: 1, to: 5, price: 59.00 },
+												{ from: 6, to: 12, price: 10.00 }
+											]
+										}
+									],
+									options: [
+										{ id: "modem", name: "Modem",
+											selectedByDefault: true,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 4.99 }
+											]
+										}
+									],
+								},
+								{ id: "internet_swiatlowodowy_100", name: "Internet 100 Mb/s",
+									 components: [
+										{ name: "Internet 100 Mb/s", 
+											activationFee: 69.00,
+											priceSchedule: [
+												{ from: 1, to: 5, price: 69.00 },
+												{ from: 6, to: 12, price: 10.00 }
+											]
+										}
+									],
+									options: [
+										{ id: "modem", name: "Modem",
+											selectedByDefault: true,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 4.99 }
+											]
+										}
+									],
+								},
+								{ id: "internet_swiatlowodowy_150", name: "Internet 150 Mb/s",
+									 components: [
+										{ name: "Internet 150 Mb/s", 
+											activationFee: 69.00,
+											priceSchedule: [
+												{ from: 1, to: 5, price: 59.00 },
+												{ from: 6, to: 12, price: 10.00 }
+											]
+										}
+									],
+									options: [
+										{ id: "modem", name: "Modem",
+											selectedByDefault: true,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 4.99 }
+											]
+										}
+									],
+								},
+								{ id: "internet_swiatlowodowy_300", name: "Internet 300 Mb/s",
+									 components: [
+										{ name: "Internet 300 Mb/s", 
+											activationFee: 69.00,
+											priceSchedule: [
+												{ from: 1, to: 5, price: 69.00 },
+												{ from: 6, to: 12, price: 10.00 }
+											]
+										}
+									],
+									options: [
+										{ id: "modem", name: "Modem",
+											selectedByDefault: true,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 4.99 }
+											]
+										}
+									],
+								},
+								{ id: "internet_swiatlowodowy_650", name: "Internet 650 Mb/s",
+									 components: [
+										{ name: "Internet 650 Mb/s", 
+											activationFee: 69.00,
+											priceSchedule: [
+												{ from: 1, to: 5, price: 79.00 },
+												{ from: 6, to: 12, price: 10.00 }
+											]
+										}
+									],
+									options: [
+										{ id: "modem", name: "Modem",
+											selectedByDefault: true,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 4.99 }
+											]
+										}
+									],
+								},
+								{ id: "internet_swiatlowodowy_800", name: "Internet 800 Mb/s",
+									 components: [
+										{ name: "Internet 800 Mb/s", 
+											activationFee: 69.00,
+											priceSchedule: [
+												{ from: 1, to: 5, price: 89.00 },
+												{ from: 6, to: 12, price: 10.00 }
+											]
+										}
+									],
+									options: [
+										{ id: "modem", name: "Modem",
+											selectedByDefault: true,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 4.99 }
+											]
+										}
+									],
+								},
+							]
+						}
+					]
+				},
 				{ id: "10", type: "fixed", months: 10, name: "10 miesięcy", 
 					offers: [
 						{ id: "strzal_w_10", name: "Strzał w 10",
@@ -4956,6 +5600,76 @@ const catalog = {
 											priceSchedule: [
 												{ from: 1, to: 3, price: 0.09 },
 												{ from: 4, to: 24, price: 4.99 }
+											]
+										}
+									],
+								},
+							]
+						},
+						{ id: "osiedlowa", name: "Oferta OSIEDLOWA",
+							globalFees:[
+								{ id:"remote_support", name:"Wsparcie zdalne usługi",
+									priceSchedule:[
+										{ from:1, to:24, price:10.19 }
+									]
+								},
+								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
+									priceSchedule:[
+										{ from:1, to:24, price:3.69 }
+									]
+								}
+							],
+							packages: [
+								{ id: "internet_swiatlowodowy_300", name: "Internet 300 Mb/s",
+									 components: [
+										{ name: "Internet 300 Mb/s", 
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 16.12 }
+											]
+										}
+									],
+									options: [
+										{ id: "modem", name: "Modem",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 4.99 }
+											]
+										}
+									],
+								},
+								{ id: "internet_swiatlowodowy_650", name: "Internet 650 Mb/s",
+									components: [ 
+										{ name: "Internet 650 Mb/s",
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 26.12 }
+											]
+										}
+									],
+									options: [
+										{ id: "modem", name: "Modem",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 4.99 }
+											]
+										}
+									],
+								},
+								{ id: "internet_swiatlowodowy_800", name: "Internet 800 Mb/s",
+									components: [ 
+										{ name: "Internet 800 Mb/s",
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 36.12 }
+											]
+										}
+									],
+									options: [
+										{ id: "modem", name: "Modem",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 4.99 }
 											]
 										}
 									],
@@ -9355,6 +10069,311 @@ const catalog = {
 										}
 									],
 									options: [
+									],
+								},
+							]
+						},
+					]
+				},
+			]
+		},
+		{ id: "dodatkowe_urzadzenia", name: "Dodatkowe urządzenia",  
+			contracts: [
+				{ id: "12", type: "fixed", months: 12, name: "12 miesięcy", 
+					offers: [
+						{ id: "dodatkowe_urzadzenie", name: "Dodatkowe Urządzenie",
+							globalFees:[
+								{ id:"remote_support", name:"Wsparcie zdalne usługi",
+									priceSchedule:[
+										{ from:1, to:12, price:10.19 }
+									]
+								},
+								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
+									priceSchedule:[
+										{ from:1, to:12, price:3.69 }
+									]
+								}
+							],
+							packages: [
+								{ id: "usluga_dodatkowe_urzadzenie", name: "Usługa z wykorzystaniem dodatkowego urządzenia",
+									 components: [
+										{ name: "Usługa z wykorzystaniem dodatkowego urządzenia", 
+											activationFee: 19.90,
+											priceSchedule: [
+												{ from:1 , to: 12, price: 17.99 }
+											]
+										}
+									],
+									options: [
+									],
+								},
+								{ id: "usluga_dodatkowe_urzadzenie_mini", name: "Usługa z wykorzystaniem dodatkowego urządzenia MINI",
+									 components: [
+										{ name: "Usługa z wykorzystaniem dodatkowego urządzenia MINI", 
+											activationFee: 9.90,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 14.99 }
+											]
+										}
+									],
+									options: [
+									],
+								},
+							]
+						},
+						{ id: "dodatkowe_urzadzenie_stop", name: "Dodatkowe Urządzenie STOP",
+							globalFees:[
+								{ id:"remote_support", name:"Wsparcie zdalne usługi",
+									priceSchedule:[
+										{ from:1, to:12, price:10.19 }
+									]
+								},
+								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
+									priceSchedule:[
+										{ from:1, to:12, price:3.69 }
+									]
+								}
+							],
+							packages: [
+								{ id: "usluga_dodatkowe_urzadzenie", name: "Usługa z wykorzystaniem dodatkowego urządzenia",
+									 components: [
+										{ name: "Usługa z wykorzystaniem dodatkowego urządzenia", 
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from:1 , to: 12, price: 17.99 }
+											]
+										}
+									],
+									options: [
+									],
+								},
+								{ id: "usluga_dodatkowe_urzadzenie_mini", name: "Usługa z wykorzystaniem dodatkowego urządzenia MINI",
+									 components: [
+										{ name: "Usługa z wykorzystaniem dodatkowego urządzenia MINI", 
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 14.99 }
+											]
+										}
+									],
+									options: [
+									],
+								},
+							]
+						},
+					]
+				},
+				{ id: "24", type: "fixed", months: 24, name: "24 miesiące", 
+					offers: [
+						{ id: "dodatkowe_urzadzenie", name: "Dodatkowe Urządzenie",
+							globalFees:[
+								{ id:"remote_support", name:"Wsparcie zdalne usługi",
+									priceSchedule:[
+										{ from:1, to:24, price:10.19 }
+									]
+								},
+								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
+									priceSchedule:[
+										{ from:1, to:24, price:3.69 }
+									]
+								}
+							],
+							packages: [
+								{ id: "usluga_dodatkowe_urzadzenie", name: "Usługa z wykorzystaniem dodatkowego urządzenia",
+									 components: [
+										{ name: "Usługa z wykorzystaniem dodatkowego urządzenia", 
+											activationFee: 19.90,
+											priceSchedule: [
+												{ from:1 , to: 24, price: 17.99 }
+											]
+										}
+									],
+									options: [
+										{ id:"smart_tv", name:"SMART TV",
+											selectedByDefault: false,
+											activationFee: 9.99,
+											priceSchedule: [
+												{ from: 1, to: 3, price: 3.73 },
+												{ from: 4, to: 24, price: 7.49 }
+											]
+										},
+										{ id:"dekoder_smart_tv", name:"Dekoder SMART TV", dependsOn:"smart_tv",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 14.99 }
+											]
+										},
+										{ id:"nieliniowe_smart_tv", name:"Dostęp do usług nieliniowych SMART TV", dependsOn:"smart_tv",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 8.28 },
+											]
+										},
+									],
+								},
+								{ id: "usluga_dodatkowe_urzadzenie_mini", name: "Usługa z wykorzystaniem dodatkowego urządzenia MINI",
+									 components: [
+										{ name: "Usługa z wykorzystaniem dodatkowego urządzenia MINI", 
+											activationFee: 9.90,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 14.99 }
+											]
+										}
+									],
+									options: [
+										{ id:"smart_tv", name:"SMART TV",
+											selectedByDefault: false,
+											activationFee: 9.99,
+											priceSchedule: [
+												{ from: 1, to: 3, price: 3.73 },
+												{ from: 4, to: 24, price: 7.49 }
+											]
+										},
+										{ id:"dekoder_smart_tv", name:"Dekoder SMART TV", dependsOn:"smart_tv",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 14.99 }
+											]
+										},
+										{ id:"nieliniowe_smart_tv", name:"Dostęp do usług nieliniowych SMART TV", dependsOn:"smart_tv",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 8.28 },
+											]
+										},
+									],
+								},
+							]
+						},
+						{ id: "dodatkowe_urzadzenie_stop", name: "Dodatkowe Urządzenie STOP",
+							globalFees:[
+								{ id:"remote_support", name:"Wsparcie zdalne usługi",
+									priceSchedule:[
+										{ from:1, to:24, price:10.19 }
+									]
+								},
+								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
+									priceSchedule:[
+										{ from:1, to:24, price:3.69 }
+									]
+								}
+							],
+							packages: [
+								{ id: "usluga_dodatkowe_urzadzenie", name: "Usługa z wykorzystaniem dodatkowego urządzenia",
+									 components: [
+										{ name: "Usługa z wykorzystaniem dodatkowego urządzenia", 
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from:1 , to: 24, price: 17.99 }
+											]
+										}
+									],
+									options: [
+										{ id:"smart_tv", name:"SMART TV",
+											selectedByDefault: false,
+											activationFee: 9.99,
+											priceSchedule: [
+												{ from: 1, to: 3, price: 3.73 },
+												{ from: 4, to: 24, price: 7.49 }
+											]
+										},
+										{ id:"dekoder_smart_tv", name:"Dekoder SMART TV", dependsOn:"smart_tv",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 14.99 }
+											]
+										},
+										{ id:"nieliniowe_smart_tv", name:"Dostęp do usług nieliniowych SMART TV", dependsOn:"smart_tv",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 8.28 },
+											]
+										},
+									],
+								},
+								{ id: "usluga_dodatkowe_urzadzenie_mini", name: "Usługa z wykorzystaniem dodatkowego urządzenia MINI",
+									 components: [
+										{ name: "Usługa z wykorzystaniem dodatkowego urządzenia MINI", 
+											activationFee: 1.23,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 14.99 }
+											]
+										}
+									],
+									options: [
+										{ id:"smart_tv", name:"SMART TV",
+											selectedByDefault: false,
+											activationFee: 9.99,
+											priceSchedule: [
+												{ from: 1, to: 3, price: 3.73 },
+												{ from: 4, to: 24, price: 7.49 }
+											]
+										},
+										{ id:"dekoder_smart_tv", name:"Dekoder SMART TV", dependsOn:"smart_tv",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 14.99 }
+											]
+										},
+										{ id:"nieliniowe_smart_tv", name:"Dostęp do usług nieliniowych SMART TV", dependsOn:"smart_tv",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 8.28 },
+											]
+										},
+									],
+								},
+							]
+						},
+						{ id: "multiscreen", name: "Multiscreen N-MR",
+							globalFees:[
+								{ id:"remote_support", name:"Wsparcie zdalne usługi",
+									priceSchedule:[
+										{ from:1, to:24, price:10.19 }
+									]
+								},
+								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
+									priceSchedule:[
+										{ from:1, to:24, price:3.69 }
+									]
+								}
+							],
+							packages: [
+								{ id: "multiscreen_smart_tv", name: "MULTISCREEN SMART TV",
+									 components: [
+										{ name: "MULTISCREEN SMART TV", 
+											activationFee: 9.99,
+											priceSchedule: [
+												{ from:1 , to: 3, price: 7.99 },
+												{ from:4 , to: 24, price: 9.99 }
+											]
+										}
+									],
+									options: [
+										{ id:"dekoder_smart_tv", name:"Dekoder SMART TV",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 14.99 }
+											]
+										},
+										{ id:"nieliniowe_smart_tv", name:"Dostęp do usług nieliniowych SMART TV",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 8.28 },
+											]
+										},
+										{ id:"dekoder", name:"Dekoder",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
+										{ id:"usluga_dodatkowe_urzadzenie", name:"Usługa z wykorzystaniem dodatkowego urządzenia",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 7.99 }
+											]
+										},
 									],
 								},
 							]
