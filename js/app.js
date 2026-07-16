@@ -934,7 +934,16 @@ function removeFromCart(id){
         openedCartItems.filter(
             x => x !== id
         );
+    resetGlobalOptionsIfCartEmpty();
     renderCart();
+}
+
+function resetGlobalOptionsIfCartEmpty(){
+    if(cart.length === 0){
+        selectedGlobalOptions.forEach(option=>{
+            option.selected = false;
+        });
+    }
 }
 
 function editCartItem(id){
