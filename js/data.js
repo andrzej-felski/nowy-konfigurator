@@ -5310,6 +5310,63 @@ const catalog = {
 				},
 				{ id: "12", type: "fixed", months: 12, name: "12 miesięcy", 
 					offers: [
+						{ id: "studencki_raj", name: "Studencki Raj",
+							globalFees:[
+								{ id:"remote_support", name:"Wsparcie zdalne usługi",
+									priceSchedule:[
+										{ from:1, to:12, price:10.19 }
+									]
+								},
+								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
+									priceSchedule:[
+										{ from:1, to:9, price:3.69 },
+										{ from:10, to:12, price:1.60 }
+									]
+								}
+							],
+							packages: [
+								{ id: "internet_swiatlowodowy_300", name: "Internet 300 Mb/s",
+									 components: [
+										{ name: "Internet 300 Mb/s", 
+											activationFee: 9.99,
+											priceSchedule: [
+												{ from: 1, to: 9, price: 41.12 },
+												{ from: 10, to: 12, price: 11.60 }
+											]
+										}
+									],
+									options: [
+										{ id: "modem", name: "Modem",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 9, price: 4.99 },
+												{ from: 10, to: 12, price: 1.60 }
+											]
+										}
+									],
+								},
+								{ id: "internet_swiatlowodowy_650", name: "Internet 650 Mb/s",
+									components: [ 
+										{ name: "Internet 650 Mb/s",
+											activationFee: 9.99,
+											priceSchedule: [
+												{ from: 1, to: 9, price: 51.11 },
+												{ from: 10, to: 12, price: 21.60 }
+											]
+										}
+									],
+									options: [
+										{ id: "modem", name: "Modem",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 9, price: 4.99 },
+												{ from: 10, to: 12, price: 1.60 }
+											]
+										}
+									],
+								},
+							]
+						},
 						{ id: "standard", name: "Super Net",
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
