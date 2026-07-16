@@ -6,6 +6,7 @@ let selectedOfferId = null;
 let selectedPackageId = null;
 let selectedBundleInternetId = null;
 let selectedBundleTvId = null;
+let currentConfigurationId = null;
 let currentStep = 1;
 let editedCartItemId = null;
 let openedCartItems = [];
@@ -110,7 +111,6 @@ function renderServices(){
             "change",
             ()=>{
                 selectedServiceId = input.value;
-                // czyścimy kolejne wybory
                 selectedContractId = null;
                 selectedOfferId = null;
                 selectedPackageId = null;
@@ -246,12 +246,13 @@ function renderSinglePackages(){
     stepContent
     .querySelectorAll('input[name="package"]')
     .forEach(input=>{
-        input.addEventListener(
-            "change",
-            ()=>{
-                selectedPackageId = input.value;
-                updateNavigation();
-            }
+		input.addEventListener(
+			"change",
+			()=>{
+				selectedPackageId = input.value;
+				currentConfiguration = null;
+				updateNavigation();
+			}
         );
     });
 }
@@ -318,26 +319,28 @@ function renderBundlePackages(){
     stepContent
     .querySelectorAll('input[name="bundleInternet"]')
     .forEach(input=>{
-        input.addEventListener(
-            "change",
-            ()=>{
-                selectedBundleInternetId =
-                    input.value;
-                updateNavigation();
-            }
-        );
+		input.addEventListener(
+			"change",
+			()=>{
+				selectedBundleInternetId =
+					input.value;
+				currentConfiguration = null;
+				updateNavigation();
+			}
+		);
     });
     stepContent
     .querySelectorAll('input[name="bundleTv"]')
     .forEach(input=>{
-        input.addEventListener(
-            "change",
-            ()=>{
-                selectedBundleTvId =
-                    input.value;
-                updateNavigation();
-            }
-        );
+		input.addEventListener(
+			"change",
+			()=>{
+				selectedBundleTvId =
+					input.value;
+				currentConfiguration = null;
+				updateNavigation();
+			}
+		);
     });
 }
 
@@ -347,14 +350,18 @@ function renderOptions(){
 	if(optionsList){
 		optionsList.remove();
 	}
-    if(!currentConfiguration){
-        const config = getCurrentConfiguration();
-        if(!config){
-            return;
-        }
-        currentConfiguration =
-            structuredClone(config);
-    }
+	const config = getCurrentConfiguration();
+	if(!config){
+		return;
+	}
+	if(
+		!currentConfiguration ||
+		currentConfigurationId !== config.id
+	){
+		currentConfiguration =
+			structuredClone(config);
+		currentConfigurationId = config.id;
+	}
 	if (!currentConfiguration.options || currentConfiguration.options.length === 0) {
 		updateNavigation();
 		return;
@@ -365,19 +372,26 @@ function renderOptions(){
 	optionsList.className = "choice-list";
 	stepContent.appendChild(optionsList);
 	applyDefaultSelection(currentConfiguration.options);
+	let changed;
+	do {
+		changed = false;
+		currentConfiguration.options.forEach(option => {
+			if(option.selected && !isOptionAllowed(option)){
+				option.selected = false;
+				changed = true;
+			}
+		});
+	} while(changed);
 	currentConfiguration.options.forEach(option=>{
+		const enabled = isOptionAllowed(option);
 		const dependencies =
 			option.requires
-			? option.requires
-			: option.dependsOn
-				? [option.dependsOn]
-				: [];
-        const enabled =
-            dependencies.every(id =>
-                currentConfiguration.options
-                .find(x => x.id === id)
-                ?.selected
-            );
+				? option.requires
+				: Array.isArray(option.dependsOn)
+					? option.dependsOn
+					: option.dependsOn
+						? [option.dependsOn]
+						: [];
 		optionsList.innerHTML += `
 		<label class="option-card ${dependencies.length && !enabled ? "option-disabled" : ""}">
 			<input
@@ -416,7 +430,6 @@ function renderOptions(){
 				if(!option){
 					return;
 				}
-				// pozwala odznaczyć radio w każdej grupie
 				if(input.type === "radio"){
 					const group = input.name;
 
@@ -438,7 +451,6 @@ function renderOptions(){
 				}
 				option.selected =
 					input.checked;
-				// radio - wyłącz inne opcje z tej samej grupy
 				if(option.group && input.checked){
 					currentConfiguration.options
 					.filter(x =>
@@ -449,32 +461,38 @@ function renderOptions(){
 						x.selected = false;
 					});
 				}
-				// sprawdzanie zależności
-				currentConfiguration.options
-				.forEach(x=>{
-					const dependencies =
-						x.requires
-						? x.requires
-						: x.dependsOn
-							? [x.dependsOn]
-							: [];
-					if(dependencies.length){
-						const allowed =
-							dependencies.every(id =>
-								currentConfiguration.options
-								.find(o => o.id === id)
-								?.selected
-							);
-						if(!allowed){
-							x.selected = false;
+				let changed;
+				do {
+					changed = false;
+					currentConfiguration.options.forEach(option => {
+						if(option.selected && !isOptionAllowed(option)){
+							option.selected = false;
+							changed = true;
 						}
-					}
-				});
+					});
+				} while(changed);
 				renderOptions();
 				updateNavigation();
 			}
 		);
 	});
+}
+
+function isOptionAllowed(option) {
+	const dependencies =
+		option.requires
+			? option.requires
+			: Array.isArray(option.dependsOn)
+				? option.dependsOn
+				: option.dependsOn
+					? [option.dependsOn]
+					: [];
+	if (!dependencies.length) {
+		return true;
+	}
+	return dependencies.some(id =>
+		currentConfiguration.options.find(o => o.id === id)?.selected
+	);
 }
 
 function formatScheduleRange(item){
@@ -960,6 +978,7 @@ function resetConfigurator(){
     selectedPackageId = null;
     selectedBundleInternetId = null;
     selectedBundleTvId = null;
+	currentConfigurationId = null;
     openedCartItems = [];
 	lastSelectedRadioByGroup = {};
     currentStep = 1;
@@ -1026,6 +1045,7 @@ function clearConfigurator(){
     selectedBundleInternetId = null;
     selectedBundleTvId = null;
     editedCartItemId = null;
+	currentConfigurationId = null;
     lastSelectedRadioByGroup = {};
     currentStep = 1;
     renderStep();
@@ -1041,12 +1061,9 @@ function canGoNext(){
     if(currentStep === 3){
         return selectedOfferId !== null;
     }
-    const service = getSelectedService();
     if(currentStep === 4){
-        const config = getCurrentConfiguration();
-        if(!config?.options){
-            return true;
-        }
+        const service = getSelectedService();
+
         if(service?.id === "packages"){
             return (
                 selectedBundleInternetId !== null &&
@@ -1056,7 +1073,7 @@ function canGoNext(){
         return selectedPackageId !== null;
     }
     if(currentStep === 5){
-        return false;
+        return true;
     }
     return false;
 }
