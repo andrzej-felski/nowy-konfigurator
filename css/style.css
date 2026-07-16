@@ -85,6 +85,7 @@ button:hover {
 
 button:disabled {
     background:#aaa;
+	cursor:not-allowed;
 }
 
 #cartSection {
