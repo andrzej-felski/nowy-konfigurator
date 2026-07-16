@@ -9,14 +9,12 @@ function calculatePackage(pkg, contract, cart = []) {
     let activationFee = 0;
     for (let month = 1; month <= months; month++) {
         let price = 0;
-        // składniki bazowe
         (pkg.components || []).forEach(component => {
             price += getPriceForMonth(
                 component.priceSchedule,
                 month
             );
         });
-        // dodatki
         (pkg.options || []).forEach(option => {
             if(option.selected) {
                 price += getPriceForMonth(
@@ -27,17 +25,14 @@ function calculatePackage(pkg, contract, cart = []) {
         });
         monthly.push(price);
     }
-    // sumowanie aktywacji składników
     (pkg.components || []).forEach(component => {
         activationFee += component.activationFee || 0;
     });
-    // aktywacje dodatków (jeżeli kiedyś będą)
     (pkg.options || []).forEach(option => {
         if(option.selected) {
             activationFee += option.activationFee || 0;
         }
     });
-    // dodanie aktywacji do pierwszego miesiąca
     monthly[0] += activationFee;
     return {
         monthly,
@@ -99,7 +94,6 @@ function getLowestGlobalFees(cart, months) {
                     month >= x.from &&
                     (x.to === null || month <= x.to)
                 );
-                // brak opłaty w tym miesiącu - pomijamy
                 if(!scheduleItem){
                     continue;
                 }
