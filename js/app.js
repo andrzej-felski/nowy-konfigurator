@@ -26,8 +26,8 @@ const backButton =
     document.getElementById("backButton");
 const nextButton =
     document.getElementById("nextButton");
-const clearButton =
-    document.getElementById("clearButton");
+/*const clearButton =
+    document.getElementById("clearButton");*/
 
 function init(){
     renderStep();
@@ -1020,11 +1020,11 @@ nextButton.addEventListener(
     }
 });
 
-clearButton.addEventListener(
+/*clearButton.addEventListener(
 "click",
 ()=>{
     clearConfigurator();
-});
+});*/
 
 function updateNavigation(){
     backButton.disabled =
@@ -1045,7 +1045,7 @@ function updateNavigation(){
         !canGoNext();
 }
 
-function clearConfigurator(){
+/*function clearConfigurator(){
     currentConfiguration = null;
     selectedServiceId = null;
     selectedContractId = null;
@@ -1058,7 +1058,7 @@ function clearConfigurator(){
     lastSelectedRadioByGroup = {};
     currentStep = 1;
     renderStep();
-}
+}*/
 
 function canGoNext(){
     if(currentStep === 1){
