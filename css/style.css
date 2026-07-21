@@ -3,6 +3,7 @@ body {
     background: radial-gradient(circle, #0284F8 0%, #0365C6 100%);
     margin:0;
 	padding:0 30px 30px 30px;
+	line-height: 1.5;
 }
 
 .header {
@@ -129,6 +130,19 @@ button:disabled {
 
 .choice-name {
     font-weight:500;
+}
+
+.choice-disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.choice-disabled .choice-name {
+    color: #777;
+}
+
+.choice-disabled input {
+    cursor: not-allowed;
 }
 
 .option-button {
@@ -260,6 +274,21 @@ button:disabled {
 
 .cart-item.open .cart-content {
     padding: 15px;
+}
+
+.regulations {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.regulations a {
+    color: #0365C6;
+    text-decoration: none;
+}
+
+.regulations a:hover {
+    text-decoration: underline;
 }
 
 @media (max-width: 900px) {
