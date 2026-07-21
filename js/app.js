@@ -187,13 +187,16 @@ function isServiceAvailable(service) {
 function hasAvailablePackages(service) {
     return service.contracts.some(contract =>
         contract.offers.some(offer => {
-            if (offer.packages) {
-                return offer.packages.some(pkg =>
-                    !offer.clientTypes ||
-                    offer.clientTypes.includes(selectedClientTypeId)
-                );
+            if(
+                offer.clientTypes &&
+                !offer.clientTypes.includes(selectedClientTypeId)
+            ){
+                return false;
             }
-            if (offer.internetPackages && offer.tvPackages) {
+            if(offer.packages){
+                return offer.packages.length > 0;
+            }
+            if(offer.internetPackages && offer.tvPackages){
                 return (
                     offer.internetPackages.length > 0 &&
                     offer.tvPackages.length > 0
@@ -202,6 +205,27 @@ function hasAvailablePackages(service) {
             return false;
         })
     );
+}
+
+function hasAvailablePackagesForContract(contract) {
+    return contract.offers.some(offer => {
+        if (
+            offer.clientTypes &&
+            !offer.clientTypes.includes(selectedClientTypeId)
+        ) {
+            return false;
+        }
+        if (offer.packages) {
+            return offer.packages.length > 0;
+        }
+        if (offer.internetPackages && offer.tvPackages) {
+            return (
+                offer.internetPackages.length > 0 &&
+                offer.tvPackages.length > 0
+            );
+        }
+        return false;
+    });
 }
 
 function renderContracts(){
@@ -217,20 +241,23 @@ function renderContracts(){
     stepContent.innerHTML += `
         <div class="choice-list">
         ${
-            service.contracts.map(contract=>`
-				<label class="choice-card ${ lockedContractId && contract.id !== selectedContractId ? "choice-disabled" : "" }">
+			service.contracts.map(contract=>{
+				const enabled = hasAvailablePackagesForContract(contract);
+				return `
+				<label class="choice-card ${!enabled ? "choice-disabled" : ""}">
 					<input
 						type="radio"
 						name="contract"
 						value="${contract.id}"
 						${selectedContractId === contract.id ? "checked" : ""}
-						${lockedContractId && contract.id !== selectedContractId ? "disabled" : ""}
+						${!enabled ? "disabled" : ""}
 					/>
-                    <span class="choice-name">
-                        ${contract.name}
-                    </span>
-                </label>
-            `).join("")
+					<span class="choice-name">
+						${contract.name}
+					</span>
+				</label>
+				`;
+				}).join("")
         }
         </div>
     `;
