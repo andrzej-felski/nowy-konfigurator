@@ -1,5 +1,6 @@
 let currentConfiguration = null;
 let cart = [];
+let selectedClientTypeId = null;
 let selectedServiceId = null;
 let selectedContractId = null;
 let selectedOfferId = null;
@@ -17,6 +18,8 @@ let selectedGlobalOptions =
         ...option,
         selected: option.selectedByDefault
     }));
+let lockedClientTypeId = null;
+let lockedContractId = null;
 
 const stepContent =
     document.getElementById("stepContent");
@@ -50,35 +53,84 @@ function getDefaultId(items){
 
 function renderStep(){
     stepContent.innerHTML = "";
-    const titles = {
-        1: "Usługa",
-        2: "Długość umowy",
-        3: "Oferta",
-        4: "Pakiet",
-        5: "Dodatki"
-    };
+	const titles = {
+		1: "Typ klienta",
+		2: "Usługa",
+		3: "Długość umowy",
+		4: "Oferta",
+		5: "Pakiet",
+		6: "Dodatki"
+	};
     stepContent.innerHTML += `
         <h2>
             ${titles[currentStep]}
         </h2>
     `;
-	if(currentStep === 1){
+	if (currentStep === 1) {
+		renderClientTypes();
+	}
+	if (currentStep === 2) {
 		renderServices();
 	}
-	if(currentStep === 2){
+	if (currentStep === 3) {
 		renderContracts();
 	}
-	if(currentStep === 3){
+	if (currentStep === 4) {
 		renderOffers();
 	}
-	if(currentStep === 4){
+	if (currentStep === 5) {
 		renderPackages();
 	}
-	if(currentStep === 5){
+	if (currentStep === 6) {
 		renderOptions();
 	}
 	renderSummary();
 	updateNavigation();
+}
+
+function renderClientTypes() {
+	if (lockedClientTypeId) {
+		selectedClientTypeId = lockedClientTypeId;
+	} else if (!selectedClientTypeId) {
+		selectedClientTypeId = getDefaultId(catalog.clientTypes);
+	}
+    stepContent.innerHTML += `
+        <div class="choice-list">
+            ${
+                catalog.clientTypes.map(type => `
+                    <label class="choice-card ${ lockedClientTypeId && type.id !== selectedClientTypeId ? "choice-disabled" : "" }">
+						<input
+							type="radio"
+							name="clientType"
+							value="${type.id}"
+							${selectedClientTypeId === type.id ? "checked" : ""}
+							${lockedClientTypeId && type.id !== selectedClientTypeId ? "disabled" : ""}
+						/>
+                        <span class="choice-name">
+                            ${type.name}
+                        </span>
+                    </label>
+                `).join("")
+            }
+        </div>
+    `;
+    stepContent
+        .querySelectorAll('input[name="clientType"]')
+        .forEach(input => {
+            input.addEventListener("change", () => {
+                selectedClientTypeId = input.value;
+                selectedServiceId = null;
+                selectedContractId = null;
+                selectedOfferId = null;
+                selectedPackageId = null;
+                selectedBundleInternetId = null;
+                selectedBundleTvId = null;
+                currentConfiguration = null;
+                currentConfigurationId = null;
+
+                renderStep();
+            });
+        });
 }
 
 function renderServices(){
@@ -88,38 +140,48 @@ function renderServices(){
     stepContent.innerHTML += `
         <div class="choice-list">
             ${
-                catalog.services.map(service=>`
-                    <label class="choice-card">
-                        <input 
-                            type="radio"
-                            name="service"
-                            value="${service.id}"
-                            ${selectedServiceId === service.id ? "checked" : ""}
-                        >
-                        <span class="choice-name">
-                            ${service.name}
-                        </span>
-                    </label>
-                `).join("")
+                catalog.services.map(service => {
+                    const enabled = isServiceAvailable(service);
+                    return `
+                        <label class="choice-card ${!enabled ? "choice-disabled" : ""}">
+                            <input
+                                type="radio"
+                                name="service"
+                                value="${service.id}"
+                                ${selectedServiceId === service.id ? "checked" : ""}
+                                ${!enabled ? "disabled" : ""}
+                            >
+                            <span class="choice-name">
+                                ${service.name}
+                            </span>
+                        </label>
+                    `;
+                }).join("")
             }
         </div>
     `;
     stepContent
-    .querySelectorAll('input[name="service"]')
-    .forEach(input=>{
-        input.addEventListener(
-            "change",
-            ()=>{
+        .querySelectorAll('input[name="service"]')
+        .forEach(input=>{
+            input.addEventListener("change", ()=>{
                 selectedServiceId = input.value;
                 selectedContractId = null;
                 selectedOfferId = null;
                 selectedPackageId = null;
-				selectedBundleInternetId = null;
-				selectedBundleTvId = null;
+                selectedBundleInternetId = null;
+                selectedBundleTvId = null;
                 renderStep();
-            }
-        );
-    });
+            });
+        });
+}
+
+function isServiceAvailable(service) {
+    if (!lockedContractId) {
+        return true;
+    }
+    return service.contracts.some(
+        contract => contract.id === lockedContractId
+    );
 }
 
 function renderContracts(){
@@ -127,20 +189,23 @@ function renderContracts(){
     if(!service){
         return;
     }
-    if(!selectedContractId){
-        selectedContractId = getDefaultId(service.contracts);
-    }
+	if (lockedContractId) {
+		selectedContractId = lockedContractId;
+	} else if (!selectedContractId) {
+		selectedContractId = getDefaultId(service.contracts);
+	}
     stepContent.innerHTML += `
         <div class="choice-list">
         ${
             service.contracts.map(contract=>`
-                <label class="choice-card">
-                    <input 
-                        type="radio"
-                        name="contract"
-                        value="${contract.id}"
-                        ${selectedContractId === contract.id ? "checked" : ""}
-                    >
+				<label class="choice-card ${ lockedContractId && contract.id !== selectedContractId ? "choice-disabled" : "" }">
+					<input
+						type="radio"
+						name="contract"
+						value="${contract.id}"
+						${selectedContractId === contract.id ? "checked" : ""}
+						${lockedContractId && contract.id !== selectedContractId ? "disabled" : ""}
+					/>
                     <span class="choice-name">
                         ${contract.name}
                     </span>
@@ -168,14 +233,17 @@ function renderOffers(){
     if(!contract){
         return;
     }
-
-    if(!selectedOfferId){
-        selectedOfferId = getDefaultId(contract.offers);
-    }
+	const offers = contract.offers.filter(offer =>
+		!offer.clientTypes ||
+		offer.clientTypes.includes(selectedClientTypeId)
+	);
+	if (!selectedOfferId || !offers.some(o => o.id === selectedOfferId)) {
+		selectedOfferId = getDefaultId(offers);
+	}
     stepContent.innerHTML += `
         <div class="choice-list">
             ${
-                contract.offers.map(offer=>`
+                offers.map(offer=>`
                     <label class="choice-card">
                         <input 
                             type="radio"
@@ -505,12 +573,17 @@ function formatScheduleRange(item){
     return `${item.from}-${item.to} mies.`;
 }
 
-function renderSummary(){
+function renderSummary() {
     summaryContent.innerHTML = `
     ${
-        getSelectedService()
-        ? getSelectedService().name
+        getSelectedClientType()
+        ? getSelectedClientType().name
         : "-"
+    }
+    ${
+        getSelectedService()
+        ? " - " + getSelectedService().name
+        : ""
     }
     ${
         getSelectedContract()
@@ -530,6 +603,12 @@ function renderSummary(){
     `;
 }
 
+function getSelectedClientType() {
+    return catalog.clientTypes.find(
+        x => x.id === selectedClientTypeId
+    );
+}
+
 function getSelectedService(){
     return catalog.services.find(
         x => x.id === selectedServiceId
@@ -547,14 +626,17 @@ function getSelectedContract(){
     );
 }
 
-function getSelectedOffer(){
-    const contract =
-        getSelectedContract();
-    if(!contract || !selectedOfferId){
+function getSelectedOffer() {
+    const contract = getSelectedContract();
+    if (!contract || !selectedOfferId) {
         return null;
     }
-    return contract.offers.find(
-        x => x.id === selectedOfferId
+    return contract.offers.find(x =>
+        x.id === selectedOfferId &&
+        (
+            !x.clientTypes ||
+            x.clientTypes.includes(selectedClientTypeId)
+        )
     );
 }
 
@@ -773,6 +855,30 @@ function renderCart(){
 						<br>
 					`;
 				}).join("")}
+				${
+					offer.regulations?.length
+					?
+					`
+					<div class="regulations">
+						<strong>Regulaminy:</strong>
+						<br>
+						${
+							offer.regulations.map(regulation=>`
+								<a 
+									href="${regulation.url}" 
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									${regulation.name}
+								</a>
+								<br>
+							`).join("")
+						}
+					</div>
+					`
+					:
+					""
+				}
             </div>
         </div>
         `;
@@ -870,6 +976,7 @@ function formatMonthRange(item){
 }
 
 function addCurrentPackageToCart(){
+	const wasEmpty = cart.length === 0;
     const packageCopy =
         structuredClone(currentConfiguration);
 	const cartItem = {
@@ -897,6 +1004,10 @@ function addCurrentPackageToCart(){
     }else{
         cart.push(cartItem);
     }
+	if (wasEmpty) {
+		lockedClientTypeId = selectedClientTypeId;
+		lockedContractId = selectedContractId;
+	}
     editedCartItemId = null;
     renderCart();
     resetConfigurator();
@@ -936,6 +1047,7 @@ function removeFromCart(id){
         );
     resetGlobalOptionsIfCartEmpty();
     renderCart();
+	renderStep();
 }
 
 function resetGlobalOptionsIfCartEmpty(){
@@ -943,6 +1055,8 @@ function resetGlobalOptionsIfCartEmpty(){
         selectedGlobalOptions.forEach(option=>{
             option.selected = false;
         });
+        lockedClientTypeId = null;
+        lockedContractId = null;
     }
 }
 
@@ -981,6 +1095,7 @@ function editCartItem(id){
 
 function resetConfigurator(){
     currentConfiguration = null;
+	selectedClientTypeId = null;
     selectedServiceId = null;
     selectedContractId = null;
     selectedOfferId = null;
@@ -1006,7 +1121,7 @@ backButton.addEventListener(
 nextButton.addEventListener(
 "click",
 ()=>{
-    if(currentStep === 5){
+    if(currentStep === 6){
         if(editedCartItemId){
             saveEditedPackage();
         } else {
@@ -1029,7 +1144,7 @@ nextButton.addEventListener(
 function updateNavigation(){
     backButton.disabled =
         currentStep === 1;
-    if(currentStep === 5){
+    if(currentStep === 6){
         nextButton.disabled = false;
         nextButton.innerHTML =
             editedCartItemId
@@ -1060,20 +1175,22 @@ function updateNavigation(){
     renderStep();
 }*/
 
-function canGoNext(){
-    if(currentStep === 1){
+function canGoNext() {
+    if (currentStep === 1) {
+        return selectedClientTypeId !== null;
+    }
+    if (currentStep === 2) {
         return selectedServiceId !== null;
     }
-    if(currentStep === 2){
+    if (currentStep === 3) {
         return selectedContractId !== null;
     }
-    if(currentStep === 3){
+    if (currentStep === 4) {
         return selectedOfferId !== null;
     }
-    if(currentStep === 4){
+    if (currentStep === 5) {
         const service = getSelectedService();
-
-        if(service?.id === "packages"){
+        if (service?.id === "packages") {
             return (
                 selectedBundleInternetId !== null &&
                 selectedBundleTvId !== null
@@ -1081,7 +1198,7 @@ function canGoNext(){
         }
         return selectedPackageId !== null;
     }
-    if(currentStep === 5){
+    if (currentStep === 6) {
         return true;
     }
     return false;
@@ -1098,13 +1215,19 @@ function saveOpenedCartItems(){
 function toggleCartItem(header){
     const item = header.parentElement;
     const content = item.querySelector(".cart-content");
-    item.classList.toggle("open");
-    if(item.classList.contains("open")){
+    const isOpening = !item.classList.contains("open");
+    document.querySelectorAll(".cart-item.open").forEach(openItem => {
+        openItem.classList.remove("open");
+        const openContent = openItem.querySelector(".cart-content");
+        openContent.style.maxHeight = "0px";
+    });
+    if (isOpening) {
+        item.classList.add("open");
         content.style.maxHeight = content.scrollHeight + "px";
+        openedCartItems = [item.dataset.id];
     } else {
-        content.style.maxHeight = "0px";
+        openedCartItems = [];
     }
-    saveOpenedCartItems();
 }
 
 function getGlobalFeesCalculationMonths(cart){
