@@ -141,7 +141,7 @@ function renderServices(){
         <div class="choice-list">
             ${
                 catalog.services.map(service => {
-                    const enabled = isServiceAvailable(service);
+                    const enabled = hasAvailablePackages(service);
                     return `
                         <label class="choice-card ${!enabled ? "choice-disabled" : ""}">
                             <input
@@ -181,6 +181,26 @@ function isServiceAvailable(service) {
     }
     return service.contracts.some(
         contract => contract.id === lockedContractId
+    );
+}
+
+function hasAvailablePackages(service) {
+    return service.contracts.some(contract =>
+        contract.offers.some(offer => {
+            if (offer.packages) {
+                return offer.packages.some(pkg =>
+                    !offer.clientTypes ||
+                    offer.clientTypes.includes(selectedClientTypeId)
+                );
+            }
+            if (offer.internetPackages && offer.tvPackages) {
+                return (
+                    offer.internetPackages.length > 0 &&
+                    offer.tvPackages.length > 0
+                );
+            }
+            return false;
+        })
     );
 }
 
