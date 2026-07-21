@@ -1,4 +1,14 @@
 const catalog = {
+	clientTypes: [
+		{
+			id: "new",
+			name: "Nowy klient",
+		},
+		{
+			id: "existing",
+			name: "Obecny klient"
+		}
+	],
     globalOptions: [
         { id: "e_faktura", name: "Zgoda na e-fakturę",
             selectedByDefault: false,
@@ -15,17 +25,24 @@ const catalog = {
 				{ id: "12", type: "fixed", months: 12, name: "12 miesięcy",
 					offers: [
 						{ id: "standard", name: "Super Box",
+							clientTypes: ["new"],
+							regulations: [
+								{ name: "Regulamin Super Box + SMART TV",
+									url: "regulaminy/pakiety/Super Box + SMART TV 08-26.pdf"
+								},
+								{ name: "Regulamin Premium",
+									url: "regulaminy/telewizja/Premium 02-26.pdf"
+								}
+							],
 							globalFees:[
-								{
-									id:"remote_support",
-									name:"Wsparcie zdalne usługi",
+								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
 										{ from:1, to:12, price:10.19 }
 									]
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:12, price:3.69 }
+										{ from:1, to:12, price:7.39 }
 									]
 								}
 							],
@@ -63,7 +80,7 @@ const catalog = {
 											priceSchedule: [
 												{ from: 1, to: 12, price: 15.54 }
 											]
-										}
+										},
 									],
 								},
 								{ id: "internet_swiatlowodowy_650", name: "Internet 650 Mb/s",
@@ -76,12 +93,30 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 12, price: 20.72 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 5.39 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 1.27 }
+											]
+										},
+										{ id: "modem_4", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 0.00 }
+											]
+										},
 									],
 								},
 								{ id: "internet_swiatlowodowy_800", name: "Internet 800 Mb/s",
@@ -94,12 +129,30 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 12, price: 20.72 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 5.39 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 1.27 }
+											]
+										},
+										{ id: "modem_4", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 0.00 }
+											]
+										},
 									],
 								},
 							],
@@ -581,17 +634,24 @@ const catalog = {
 							]
 						},
 						{ id: "trzymaj_z_nami", name: "Trzymaj z nami",
+							clientTypes: ["existing"],
+							regulations: [
+								{ name: "Regulamin Trzymaj z nami NET i TV + SMART TV",
+									url: "regulaminy/pakiety/Trzymaj z nami NET i TV + SMART TV 08-26.pdf"
+								},
+								{ name: "Regulamin Premium",
+									url: "regulaminy/telewizja/Premium 02-26.pdf"
+								}
+							],
 							globalFees:[
-								{
-									id:"remote_support",
-									name:"Wsparcie zdalne usługi",
+								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
 										{ from:1, to:12, price:10.19 }
 									]
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:12, price:3.69 }
+										{ from:1, to:12, price:7.39 }
 									]
 								}
 							],
@@ -642,12 +702,24 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 12, price: 5.39 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 0.00 }
+											]
+										},
 									],
 								},
 								{ id: "internet_swiatlowodowy_800", name: "Internet 800 Mb/s",
@@ -660,12 +732,24 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 12, price: 5.39 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 0.00 }
+											]
+										},
 									],
 								},
 							],
@@ -1147,17 +1231,24 @@ const catalog = {
 							]
 						},
 						{ id: "stop_extra_net_i_tv", name: "STOP EXTRA NET I TV",
+							clientTypes: ["existing"],
+							regulations: [
+								{ name: "Regulamin Stop Extra Net i TV",
+									url: "regulaminy/pakiety/Stop Extra Net i TV 08-26.pdf"
+								},
+								{ name: "Regulamin Premium",
+									url: "regulaminy/telewizja/Premium 02-26.pdf"
+								}
+							],
 							globalFees:[
-								{
-									id:"remote_support",
-									name:"Wsparcie zdalne usługi",
+								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
 										{ from:1, to:12, price:10.19 }
 									]
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:12, price:3.69 }
+										{ from:1, to:12, price:7.39 }
 									]
 								}
 							],
@@ -1177,7 +1268,7 @@ const catalog = {
 											priceSchedule: [
 												{ from: 1, to: 12, price: 4.99 }
 											]
-										}
+										},
 									],
 								},
 								{ id: "internet_swiatlowodowy_650", name: "Internet 650 Mb/s",
@@ -1190,12 +1281,24 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 12, price: 4.99 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 0.00 }
+											]
+										},
 									],
 								},
 							],
@@ -1437,19 +1540,21 @@ const catalog = {
 				{ id: "24", type: "fixed", months: 24, name: "24 miesiące",
 					offers: [
 						{ id: "oferta_letnia", name: "Oferta letnia TV + NET",
+							clientTypes: ["new", "existing"],
+							regulations: [
+								{ name: "Regulamin Letnia TV + Net + Premium + SMART TV",
+									url: "regulaminy/pakiety/Letnia TV+ Net+ Premium +SMART TV TKC 08-26.pdf"
+								},
+							],
 							globalFees:[
-								{
-									id:"remote_support",
-									name:"Wsparcie zdalne usługi",
+								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
 										{ from:1, to:24, price:10.19 }
 									]
 								},
-								{
-									id:"telecom_fee",
-									name:"Opłata telekomunikacyjna",
+								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -1559,19 +1664,21 @@ const catalog = {
 							]
 						},
 						{ id: "oferta_letnia_premium", name: "Oferta letnia TV + NET + Premium",
+							clientTypes: ["new", "existing"],
+							regulations: [
+								{ name: "Regulamin Letnia TV + Net + Premium + SMART TV",
+									url: "regulaminy/pakiety/Letnia TV+ Net+ Premium +SMART TV TKC 08-26.pdf"
+								},
+							],
 							globalFees:[
-								{
-									id:"remote_support",
-									name:"Wsparcie zdalne usługi",
+								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
 										{ from:1, to:24, price:10.19 }
 									]
 								},
-								{
-									id:"telecom_fee",
-									name:"Opłata telekomunikacyjna",
+								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -1648,20 +1755,6 @@ const catalog = {
 												{ from: 1, to: 24, price: 0.00 }
 											]
 										},
-										{ id:"canal_seriale", name:"CANAL+ Seriale i Filmy", group:"canal",
-											selectedByDefault: false,
-											activationFee: 1.25,
-											priceSchedule: [
-												{ from: 1, to: 24, price: 25.00 },
-											]
-										},
-										{ id:"canal_sport", name:"CANAL+ Super Sport", group:"canal",
-											selectedByDefault:false,
-											activationFee: 1.25,
-											priceSchedule:[
-												{ from:1, to:24, price:65.00 }
-											]
-										},
 										{ id:"smart_tv", name:"SMART TV",
 											selectedByDefault: false,
 											activationFee: 1.25,
@@ -1683,6 +1776,20 @@ const catalog = {
 												{ from: 2, to: 24, price: 5.00 },
 											]
 										},
+										{ id:"canal_seriale", name:"CANAL+ Seriale i Filmy", group:"canal",
+											selectedByDefault: false,
+											activationFee: 1.25,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 25.00 },
+											]
+										},
+										{ id:"canal_sport", name:"CANAL+ Super Sport", group:"canal",
+											selectedByDefault:false,
+											activationFee: 1.25,
+											priceSchedule:[
+												{ from:1, to:24, price:65.00 }
+											]
+										},
 										{ id:"dodatkowe_urzadzenie", name:"Dostęp do Usługi z wykorzystaniem dodatkowego urządzenia",
 											selectedByDefault: false,
 											activationFee: 4.99,
@@ -1695,19 +1802,27 @@ const catalog = {
 							]
 						},
 						{ id: "osiedlowa", name: "Oferta OSIEDLOWA",
+							clientTypes: ["new"],
+							regulations: [
+								{ name: "Regulamin Internet + TV + SMART TV Osiedlowa",
+									url: "regulaminy/pakiety/Internet + TV + SMART TV Osiedlowa 08-26.pdf"
+								},
+								{ name: "Regulamin Premium",
+									url: "regulaminy/telewizja/Premium 02-26.pdf"
+								},
+								{ name: "Regulamin Eurosport",
+									url: "regulaminy/telewizja/Eurosport TKC 04-26.pdf"
+								},
+							],
 							globalFees:[
-								{
-									id:"remote_support",
-									name:"Wsparcie zdalne usługi",
+								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
 										{ from:1, to:24, price:10.19 }
 									]
 								},
-								{
-									id:"telecom_fee",
-									name:"Opłata telekomunikacyjna",
+								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -1727,7 +1842,7 @@ const catalog = {
 											priceSchedule: [
 												{ from: 1, to: 24, price: 4.99 }
 											]
-										}
+										},
 									],
 								},
 								{ id: "internet_swiatlowodowy_650", name: "Internet 650 Mb/s",
@@ -1740,12 +1855,24 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 4.99 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
 									],
 								},
 								{ id: "internet_swiatlowodowy_800", name: "Internet 800 Mb/s",
@@ -1758,12 +1885,24 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 4.99 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
 									],
 								},
 							],
@@ -2071,19 +2210,27 @@ const catalog = {
 							]
 						},
 						{ id: "standard", name: "Super Box",
+							clientTypes: ["new"],
+							regulations: [
+								{ name: "Regulamin Super Box + SMART TV",
+									url: "regulaminy/pakiety/Super Box + SMART TV 08-26.pdf"
+								},
+								{ name: "Regulamin Premium",
+									url: "regulaminy/telewizja/Premium 02-26.pdf"
+								},
+								{ name: "Regulamin Eurosport",
+									url: "regulaminy/telewizja/Eurosport TKC 04-26.pdf"
+								},
+							],
 							globalFees:[
-								{
-									id:"remote_support",
-									name:"Wsparcie zdalne usługi",
+								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
 										{ from:1, to:24, price:10.19 }
 									]
 								},
-								{
-									id:"telecom_fee",
-									name:"Opłata telekomunikacyjna",
+								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -2121,7 +2268,7 @@ const catalog = {
 											priceSchedule: [
 												{ from: 1, to: 24, price: 15.54 }
 											]
-										}
+										},
 									],
 								},
 								{ id: "internet_swiatlowodowy_650", name: "Internet 650 Mb/s",
@@ -2134,12 +2281,30 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 20.72 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 5.39 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_4", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
 									],
 								},
 								{ id: "internet_swiatlowodowy_800", name: "Internet 800 Mb/s",
@@ -2152,12 +2317,30 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 20.72 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 5.39 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_4", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
 									],
 								},
 							],
@@ -2699,19 +2882,27 @@ const catalog = {
 							]
 						},
 						{ id: "super_box_kdr", name: "Super Box KDR",
+							clientTypes: ["new"],
+							regulations: [
+								{ name: "Regulamin Super Box KDR",
+									url: "regulaminy/pakiety/Super Box KDR 08-26.pdf"
+								},
+								{ name: "Regulamin Premium",
+									url: "regulaminy/telewizja/Premium 02-26.pdf"
+								},
+								{ name: "Regulamin Eurosport",
+									url: "regulaminy/telewizja/Eurosport TKC 04-26.pdf"
+								},
+							],
 							globalFees:[
-								{
-									id:"remote_support",
-									name:"Wsparcie zdalne usługi",
+								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
 										{ from:1, to:24, price:10.19 }
 									]
 								},
-								{
-									id:"telecom_fee",
-									name:"Opłata telekomunikacyjna",
+								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -2731,7 +2922,7 @@ const catalog = {
 											priceSchedule: [
 												{ from: 1, to: 24, price: 10.36 }
 											]
-										}
+										},
 									],
 								},
 								{ id: "internet_swiatlowodowy_650", name: "Internet 650 Mb/s",
@@ -2744,12 +2935,30 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 15.54 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 5.39 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_4", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
 									],
 								},
 								{ id: "internet_swiatlowodowy_800", name: "Internet 800 Mb/s",
@@ -2762,12 +2971,30 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 15.54 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 5.39 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_4", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
 									],
 								},
 							],
@@ -3225,19 +3452,21 @@ const catalog = {
 							]
 						},
 						{ id: "blue_box_net", name: "Blue Box TV + NET",
+							clientTypes: ["existing"],
+							regulations: [
+								{name: "Regulamin Blue Box TV, Internet + SMART TV",
+									url: "regulaminy/pakiety/Blue Box TV, Internet + SMART TV BZ CONT 08-26.pdf"
+								},
+							],
 							globalFees:[
-								{
-									id:"remote_support",
-									name:"Wsparcie zdalne usługi",
+								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
 										{ from:1, to:24, price:10.19 }
 									]
 								},
-								{
-									id:"telecom_fee",
-									name:"Opłata telekomunikacyjna",
+								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -3257,7 +3486,7 @@ const catalog = {
 											priceSchedule: [
 												{ from: 1, to: 24, price: 4.99 }
 											]
-										}
+										},
 									],
 								},
 								{ id: "internet_swiatlowodowy_650", name: "Internet 650 Mb/s",
@@ -3270,12 +3499,24 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 4.99 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
 									],
 								},
 								{ id: "internet_swiatlowodowy_800", name: "Internet 800 Mb/s",
@@ -3288,12 +3529,24 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 4.99 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
 									],
 								},
 							],
@@ -3338,21 +3591,23 @@ const catalog = {
 							]
 						},
 						{ id: "blue_box_net_3x0", name: "Blue Box TV + NET 3x0",
+							clientTypes: ["new"],
+							regulations: [
+								{ name: "Regulamin Blue Box TV, Internet + SMART TV 3x0",
+									url: "regulaminy/pakiety/Blue Box TV, Internet + SMART TV 3x0 08-26.pdf"
+								},
+							],
 							globalFees:[
-								{
-									id:"remote_support",
-									name:"Wsparcie zdalne usługi",
+								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
 										{ from: 1, to: 3, price: 0.00 },
 										{ from:4, to:24, price:10.19 }
 									]
 								},
-								{
-									id:"telecom_fee",
-									name:"Opłata telekomunikacyjna",
+								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
 										{ from: 1, to: 3, price: 0.00 },
-										{ from:4, to:24, price:3.69 }
+										{ from:4, to:24, price:7.39 }
 									]
 								}
 							],
@@ -3374,7 +3629,7 @@ const catalog = {
 												{ from: 1, to: 3, price: 0.00 },
 												{ from: 4, to: 24, price: 4.99 }
 											]
-										}
+										},
 									],
 								},
 								{ id: "internet_swiatlowodowy_650", name: "Internet 650 Mb/s",
@@ -3388,13 +3643,26 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 3, price: 0.00 },
 												{ from: 4, to: 24, price: 4.99 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 3, price: 0.00 },
+												{ from: 4, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
 									],
 								},
 								{ id: "internet_swiatlowodowy_800", name: "Internet 800 Mb/s",
@@ -3408,13 +3676,26 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 3, price: 0.00 },
 												{ from: 4, to: 24, price: 4.99 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 3, price: 0.00 },
+												{ from: 4, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
 									],
 								},
 							],
@@ -3463,19 +3744,21 @@ const catalog = {
 							]
 						},
 						{ id: "dla_dwojga", name: "Dla Dwojga",
+							clientTypes: ["new", "existing"],
+							regulations: [
+								{ name: "Regulamin Dla Dwojga Canal+, HBO + HBO Max, TV i Net + SMART TV",
+									url: "regulaminy/pakiety/Dla Dwojga Canal+, HBO + HBO Max, TV i Net + SMART TV 08-26.pdf"
+								},
+							],
 							globalFees:[
-								{
-									id:"remote_support",
-									name:"Wsparcie zdalne usługi",
+								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
 										{ from:1, to:24, price:10.19 }
 									]
 								},
-								{
-									id:"telecom_fee",
-									name:"Opłata telekomunikacyjna",
+								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -3526,12 +3809,24 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 5.39 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
 									],
 								},
 								{ id: "internet_swiatlowodowy_800", name: "Internet 800 Mb/s",
@@ -3544,12 +3839,24 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 5.39 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
 									],
 								},
 							],
@@ -3821,19 +4128,27 @@ const catalog = {
 							]
 						},
 						{ id: "trzymaj_z_nami", name: "Trzymaj z nami",
+							clientTypes: ["existing"],
+							regulations: [
+								{ name: "Regulamin Trzymaj z nami NET i TV + SMART TV",
+									url: "regulaminy/pakiety/Trzymaj z nami NET i TV + SMART TV 08-26.pdf"
+								},
+								{ name: "Regulamin Premium",
+									url: "regulaminy/telewizja/Premium 02-26.pdf"
+								},
+								{ name: "Regulamin Eurosport",
+									url: "regulaminy/telewizja/Eurosport TKC 04-26.pdf"
+								},
+							],
 							globalFees:[
-								{
-									id:"remote_support",
-									name:"Wsparcie zdalne usługi",
+								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
 										{ from:1, to:24, price:10.19 }
 									]
 								},
-								{
-									id:"telecom_fee",
-									name:"Opłata telekomunikacyjna",
+								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -3884,12 +4199,24 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 5.39 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
 									],
 								},
 								{ id: "internet_swiatlowodowy_800", name: "Internet 800 Mb/s",
@@ -3902,12 +4229,24 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 5.39 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
 									],
 								},
 							],
@@ -4449,19 +4788,27 @@ const catalog = {
 							]
 						},
 						{ id: "trzymaj_z_nami_kdr", name: "Trzymaj z nami KDR",
+							clientTypes: ["existing"],
+							regulations: [
+								{ name: "Regulamin Trzymaj z nami NET i TV KDR",
+									url: "regulaminy/pakiety/Trzymaj z nami NET i TV KDR 08-26.pdf"
+								},
+								{ name: "Regulamin Premium",
+									url: "regulaminy/telewizja/Premium 02-26.pdf"
+								},
+								{ name: "Regulamin Eurosport",
+									url: "regulaminy/telewizja/Eurosport TKC 04-26.pdf"
+								},
+							],
 							globalFees:[
-								{
-									id:"remote_support",
-									name:"Wsparcie zdalne usługi",
+								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
 										{ from:1, to:24, price:10.19 }
 									]
 								},
-								{
-									id:"telecom_fee",
-									name:"Opłata telekomunikacyjna",
+								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -4494,12 +4841,24 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 5.39 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
 									],
 								},
 								{ id: "internet_swiatlowodowy_800", name: "Internet 800 Mb/s",
@@ -4512,12 +4871,24 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 5.39 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
 									],
 								},
 							],
@@ -4983,6 +5354,15 @@ const catalog = {
 				{ id: "3", type: "fixed", months: 12, name: "3 miesiące", 
 					offers: [
 						{ id: "sezonowy", name: "Internet Sezonowy",
+							clientTypes: ["new"],
+							regulations: [
+								{ name: "Regulamin Indywidualny - Sezon 2026",
+									url: "regulaminy/internet światłowodowy/Indywidualny - Sezon 2026 08-26.pdf"
+								},
+								{ name: "Regulamin Sezon Internet 2026",
+									url: "regulaminy/internet światłowodowy/Sezon Internet 2026 08-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -4991,7 +5371,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:3, price:4.99 }
+										{ from:1, to:3, price:9.99 }
 									]
 								}
 							],
@@ -5117,6 +5497,15 @@ const catalog = {
 				{ id: "5", type: "fixed", months: 12, name: "5 miesięcy", 
 					offers: [
 						{ id: "sezonowy", name: "Internet Sezonowy",
+							clientTypes: ["new"],
+							regulations: [
+								{ name: "Regulamin Indywidualny - Sezon 2026",
+									url: "regulaminy/internet światłowodowy/Indywidualny - Sezon 2026 08-26.pdf"
+								},
+								{ name: "Regulamin Sezon Internet 2026",
+									url: "regulaminy/internet światłowodowy/Sezon Internet 2026 08-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -5125,7 +5514,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:5, price:4.99 }
+										{ from:1, to:5, price:9.99 }
 									]
 								}
 							],
@@ -5217,12 +5606,24 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: true,
 											priceSchedule: [
 												{ from: 1, to: 12, price: 4.99 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 0.00 }
+											]
+										},
 									],
 								},
 								{ id: "internet_swiatlowodowy_800", name: "Internet 800 Mb/s",
@@ -5236,12 +5637,24 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: true,
 											priceSchedule: [
 												{ from: 1, to: 12, price: 4.99 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 0.00 }
+											]
+										},
 									],
 								},
 							]
@@ -5251,6 +5664,12 @@ const catalog = {
 				{ id: "10", type: "fixed", months: 10, name: "10 miesięcy", 
 					offers: [
 						{ id: "strzal_w_10", name: "Strzał w 10",
+							clientTypes: ["new"],
+							regulations: [
+								{ name: "Regulamin Strzał w 10–10",
+									url: "regulaminy/internet światłowodowy/Strzał w 10–10 08-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -5259,7 +5678,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:10, price:3.69 }
+										{ from:1, to:10, price:7.39 }
 									]
 								}
 							],
@@ -5295,13 +5714,26 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 1, price: 0.09 },
 												{ from: 2, to: 10, price: 4.99 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 1, price: 0.09 },
+												{ from: 2, to: 10, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 10, price: 0.00 }
+											]
+										},
 									],
 								},
 							]
@@ -5311,6 +5743,12 @@ const catalog = {
 				{ id: "12", type: "fixed", months: 12, name: "12 miesięcy", 
 					offers: [
 						{ id: "studencki_raj", name: "Studencki Raj",
+							clientTypes: ["new"],
+							regulations: [
+								{ name: "Regulamin Studencki Raj",
+									url: "regulaminy/internet światłowodowy/Studencki Raj 08-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -5319,8 +5757,8 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:9, price:3.69 },
-										{ from:10, to:12, price:1.60 }
+										{ from:1, to:9, price:7.39 },
+										{ from:10, to:12, price:3.20 }
 									]
 								}
 							],
@@ -5356,18 +5794,36 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 9, price: 4.99 },
 												{ from: 10, to: 12, price: 1.60 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 0.00 }
+											]
+										},
 									],
 								},
 							]
 						},
 						{ id: "standard", name: "Super Net",
+							clientTypes: ["new"],
+							regulations: [
+								{ name: "Regulamin Super Net",
+									url: "regulaminy/internet światłowodowy/Super Net 08-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -5376,7 +5832,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:12, price:3.69 }
+										{ from:1, to:12, price:7.39 }
 									]
 								}
 							],
@@ -5432,13 +5888,26 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 1, price: 0.00 },
 												{ from: 2, to: 12, price: 15.54 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 1, price: 0.00 },
+												{ from: 2, to: 12, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 0.00 }
+											]
+										},
 									],
 								},
 								{ id: "internet_swiatlowodowy_800", name: "Internet 800 Mb/s",
@@ -5458,12 +5927,31 @@ const catalog = {
 												{ from: 1, to: 1, price: 0.00 },
 												{ from: 2, to: 12, price: 15.54 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 1, price: 0.00 },
+												{ from: 2, to: 12, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 0.00 }
+											]
+										},
 									],
 								},
 							]
 						},
 						{ id: "trzymaj_z_nami", name: "Trzymaj z nami",
+							clientTypes: ["existing"],
+							regulations: [
+								{ name: "Regulamin Trzymaj z nami NET",
+									url: "regulaminy/internet światłowodowy/Trzymaj z nami NET 08-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -5472,7 +5960,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:12, price:3.69 }
+										{ from:1, to:12, price:7.39 }
 									]
 								}
 							],
@@ -5523,12 +6011,24 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 12, price: 5.39 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 0.00 }
+											]
+										},
 									],
 								},
 								{ id: "internet_swiatlowodowy_800", name: "Internet 800 Mb/s",
@@ -5541,17 +6041,35 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 12, price: 5.39 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 0.00 }
+											]
+										},
 									],
 								},
 							]
 						},
 						{ id: "stop_extra_net", name: "STOP EXTRA NET",
+							clientTypes: ["existing"],
+							regulations: [
+								{ name: "Regulamin Stop Extra Net",
+									url: "regulaminy/internet światłowodowy/Stop Extra Net 08-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -5560,7 +6078,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:12, price:3.69 }
+										{ from:1, to:12, price:7.39 }
 									]
 								}
 							],
@@ -5593,12 +6111,24 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 12, price: 4.99 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 0.00 }
+											]
+										},
 									],
 								},
 							]
@@ -5608,6 +6138,12 @@ const catalog = {
 				{ id: "24", type: "fixed", months: 24, name: "24 miesiące", 
 					offers: [
 						{ id: "strzal_w_10", name: "Strzał w 10",
+							clientTypes: ["new"],
+							regulations: [
+								{ name: "Regulamin Strzał w 10–24",
+									url: "regulaminy/internet światłowodowy/Strzał w 10–24 08-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -5616,7 +6152,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -5652,18 +6188,37 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 3, price: 0.09 },
 												{ from: 4, to: 24, price: 4.99 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 3, price: 0.09 },
+												{ from: 4, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
 									],
 								},
 							]
 						},
 						{ id: "osiedlowa", name: "Oferta OSIEDLOWA",
+							clientTypes: ["new"],
+							regulations: [
+								{ name: "Regulamin Internet Osiedlowa 24",
+									url: "regulaminy/internet światłowodowy/Internet Osiedlowa 24 08-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -5672,7 +6227,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -5705,12 +6260,24 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 4.99 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
 									],
 								},
 								{ id: "internet_swiatlowodowy_800", name: "Internet 800 Mb/s",
@@ -5728,12 +6295,30 @@ const catalog = {
 											priceSchedule: [
 												{ from: 1, to: 24, price: 4.99 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
 									],
 								},
 							]
 						},
 						{ id: "standard", name: "Super Net",
+							clientTypes: ["new"],
+							regulations: [
+								{ name: "Regulamin Super Net",
+									url: "regulaminy/internet światłowodowy/Super Net 08-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -5742,7 +6327,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -5798,13 +6383,26 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 1, price: 0.00 },
 												{ from: 2, to: 24, price: 15.54 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 1, price: 0.00 },
+												{ from: 2, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
 									],
 								},
 								{ id: "internet_swiatlowodowy_800", name: "Internet 800 Mb/s",
@@ -5818,18 +6416,37 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 1, price: 0.00 },
 												{ from: 2, to: 24, price: 15.54 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 1, price: 0.00 },
+												{ from: 2, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
 									],
 								},
 							]
 						},
 						{ id: "net+hbo", name: "Kontynuacja Net + HBO",
+							clientTypes: ["existing"],
+							regulations: [
+								{ name: "Regulamin Kontynuacja Net + HBO",
+									url: "regulaminy/internet światłowodowy/Kontynuacja Net + HBO 08-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -5838,7 +6455,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -5880,10 +6497,28 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 9.99 }
+											]
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 5.39 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_4", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
 											]
 										},
 										{ id: "hbo_max", name: "Pakiet HBO Max",
@@ -5898,6 +6533,12 @@ const catalog = {
 							]
 						},
 						{ id: "trzymaj_z_nami", name: "Trzymaj z nami",
+							clientTypes: ["existing"],
+							regulations: [
+								{ name: "Regulamin Trzymaj z nami NET",
+									url: "regulaminy/internet światłowodowy/Trzymaj z nami NET 08-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -5906,7 +6547,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -5957,12 +6598,24 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 5.39 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
 									],
 								},
 								{ id: "internet_swiatlowodowy_800", name: "Internet 800 Mb/s",
@@ -5975,12 +6628,24 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "modem", name: "Modem",
+										{ id: "modem_1", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 5.39 }
 											]
-										}
+										},
+										{ id: "modem_2", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 0.00 }
+											]
+										},
 									],
 								},
 							]
@@ -5994,6 +6659,12 @@ const catalog = {
 				{ id: "12", type: "fixed", months: 12, name: "12 miesięcy", 
 					offers: [
 						{ id: "mobil_net", name: "Mobil NET",
+							clientTypes: ["new", "existing"],
+							regulations: [
+								{ name: "Regulamin Mobil NET",
+									url: "regulaminy/internet mobilny/Mobil NET 08-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -6002,7 +6673,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:12, price:3.69 }
+										{ from:1, to:12, price:7.39 }
 									]
 								}
 							],
@@ -6134,6 +6805,12 @@ const catalog = {
 				{ id: "24", type: "fixed", months: 24, name: "24 miesiące", 
 					offers: [
 						{ id: "mobil_net", name: "Mobil NET",
+							clientTypes: ["new", "existing"],
+							regulations: [
+								{ name: "Regulamin Mobil NET",
+									url: "regulaminy/internet mobilny/Mobil NET 08-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -6142,7 +6819,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -6278,6 +6955,15 @@ const catalog = {
 				{ id: "12", type: "fixed", months: 12, name: "12 miesięcy", 
 					offers: [
 						{ id: "standard", name: "Super TV",
+							clientTypes: ["new"],
+							regulations: [
+								{ name: "Regulamin Super TV + SMART TV",
+									url: "regulaminy/telewizja/Super TV + SMART TV 08-26.pdf"
+								},
+								{ name: "Regulamin Premium",
+									url: "regulaminy/telewizja/Premium 02-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -6286,7 +6972,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:12, price:3.69 }
+										{ from:1, to:12, price:7.39 }
 									]
 								}
 							],
@@ -6768,6 +7454,15 @@ const catalog = {
 							]
 						},
 						{ id: "trzymaj_z_nami", name: "Trzymaj z nami",
+							clientTypes: ["existing"],
+							regulations: [
+								{ name: "Regulamin Trzymaj z nami TV + SMART TV",
+									url: "regulaminy/telewizja/Trzymaj z nami TV + SMART TV 08-26.pdf"
+								},
+								{ name: "Regulamin Premium",
+									url: "regulaminy/telewizja/Premium 02-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -6776,7 +7471,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:12, price:3.69 }
+										{ from:1, to:12, price:7.39 }
 									]
 								}
 							],
@@ -7258,6 +7953,15 @@ const catalog = {
 							]
 						},
 						{ id: "stop_extra_tv", name: "STOP EXTRA TV",
+							clientTypes: ["existing"],
+							regulations: [
+								{ name: "Regulamin Stop Extra TV",
+									url: "regulaminy/telewizja/Stop Extra TV 08-26.pdf"
+								},
+								{ name: "Regulamin Premium",
+									url: "regulaminy/telewizja/Premium 02-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -7266,7 +7970,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:12, price:3.69 }
+										{ from:1, to:12, price:7.39 }
 									]
 								}
 							],
@@ -7588,6 +8292,18 @@ const catalog = {
 				{ id: "24", type: "fixed", months: 24, name: "24 miesiące", 
 					offers: [
 						{ id: "standard", name: "Super TV",
+							clientTypes: ["new"],
+							regulations: [
+								{ name: "Regulamin Super TV + SMART TV",
+									url: "regulaminy/telewizja/Super TV + SMART TV 08-26.pdf"
+								},
+								{ name: "Regulamin Premium",
+									url: "regulaminy/telewizja/Premium 02-26.pdf"
+								},
+								{ name: "Regulamin Eurosport",
+									url: "regulaminy/telewizja/Eurosport TKC 04-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -7596,7 +8312,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -8139,6 +8855,12 @@ const catalog = {
 							]
 						},
 						{ id: "blue_box", name: "Blue Box",
+							clientTypes: ["new", "existing"],
+							regulations: [
+								{ name: "Regulamin Blue Box TV + SMART TV",
+									url: "regulaminy/telewizja/Blue Box TV + SMART TV 08-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -8147,7 +8869,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -8192,6 +8914,12 @@ const catalog = {
 							],
 						},
 						{ id: "kino", name: "KINO+",
+							clientTypes: ["new", "existing"],
+							regulations: [
+								{ name: "Regulamin KINO+",
+									url: "regulaminy/telewizja/KINO+ 08-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -8200,7 +8928,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -8246,6 +8974,12 @@ const catalog = {
 							],
 						},
 						{ id: "kibic", name: "KIBIC+",
+							clientTypes: ["new", "existing"],
+							regulations: [
+								{ name: "Regulamin KIBIC+",
+									url: "regulaminy/telewizja/KIBIC+ 08-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -8254,7 +8988,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -8295,6 +9029,12 @@ const catalog = {
 							],
 						},
 						{ id: "dla_dwojga", name: "Dla Dwojga",
+							clientTypes: ["new", "existing"],
+							regulations: [
+								{ name: "Regulamin Dla Dwojga Canal+, HBO + HBO MAX i TV + SMART TV",
+									url: "regulaminy/telewizja/Dla Dwojga Canal+, HBO + HBO MAX i TV + SMART TV 08-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -8303,7 +9043,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -8549,6 +9289,18 @@ const catalog = {
 							]
 						},
 						{ id: "trzymaj_z_nami", name: "Trzymaj z nami",
+							clientTypes: ["existing"],
+							regulations: [
+								{ name: "Regulamin Trzymaj z nami TV + SMART TV",
+									url: "regulaminy/telewizja/Trzymaj z nami TV + SMART TV 08-26.pdf"
+								},
+								{ name: "Regulamin Premium",
+									url: "regulaminy/telewizja/Premium 02-26.pdf"
+								},
+								{ name: "Regulamin Eurosport",
+									url: "regulaminy/telewizja/Eurosport TKC 04-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -8557,7 +9309,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -9108,6 +9860,12 @@ const catalog = {
 				{ id: "12", type: "fixed", months: 12, name: "12 miesięcy", 
 					offers: [
 						{ id: "pakiety_tematyczne", name: "Pakiety tematyczne",
+							clientTypes: ["new", "existing"],
+							regulations: [
+								{ name: "Regulamin Premium",
+									url: "regulaminy/telewizja/Premium 02-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -9116,7 +9874,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:12, price:3.69 }
+										{ from:1, to:12, price:7.39 }
 									]
 								}
 							],
@@ -9184,6 +9942,12 @@ const catalog = {
 							]
 						},
 						{ id: "pakiety_premium", name: "Pakiety Premium",
+							clientTypes: ["new", "existing"],
+							regulations: [
+								{ name: "Regulamin Premium",
+									url: "regulaminy/telewizja/Premium 02-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -9192,7 +9956,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:12, price:3.69 }
+										{ from:1, to:12, price:7.39 }
 									]
 								}
 							],
@@ -9307,6 +10071,12 @@ const catalog = {
 				{ id: "24", type: "fixed", months: 24, name: "24 miesiące", 
 					offers: [
 						{ id: "pakiety_tematyczne", name: "Pakiety tematyczne",
+							clientTypes: ["new", "existing"],
+							regulations: [
+								{ name: "Regulamin Premium",
+									url: "regulaminy/telewizja/Premium 02-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -9315,7 +10085,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -9383,6 +10153,15 @@ const catalog = {
 							]
 						},
 						{ id: "pakiety_premium", name: "Pakiety Premium",
+							clientTypes: ["new", "existing"],
+							regulations: [
+								{ name: "Regulamin Premium",
+									url: "regulaminy/telewizja/Premium 02-26.pdf"
+								},
+								{ name: "Regulamin Eurosport",
+									url: "regulaminy/telewizja/Eurosport TKC 04-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -9391,7 +10170,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -9535,6 +10314,12 @@ const catalog = {
 				{ id: "24", type: "fixed", months: 24, name: "24 miesiące", 
 					offers: [
 						{ id: "standard", name: "FON MOBIL",
+							clientTypes: ["new", "existing"],
+							regulations: [
+								{ name: "Regulamin Fon Mobil",
+									url: "regulaminy/abonament komórkowy/Fon Mobil 08-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -9543,7 +10328,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -9611,6 +10396,12 @@ const catalog = {
 							]
 						},
 						{ id: "dwa_plus_jeden", name: "DWA PLUS JEDEN",
+							clientTypes: ["new", "existing"],
+							regulations: [
+								{ name: "Regulamin Fon Mobil Dwa Plus Jeden",
+									url: "regulaminy/abonament komórkwy/Fon Mobil Dwa Plus Jeden 08-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -9619,7 +10410,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -9679,6 +10470,12 @@ const catalog = {
 							]
 						},
 						{ id: "drugi_numer_za_50", name: "Drugi numer za 50%",
+							clientTypes: ["new", "existing"],
+							regulations: [
+								{ name: "Regulamin Fon S 19,99 zł, drugi za 50%",
+									url: "regulaminy/abonament komórkowy/Fon S 19,99 zł, drugi za 50% 08-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -9687,7 +10484,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -9722,6 +10519,12 @@ const catalog = {
 				{ id: "24", type: "fixed", months: 24, name: "24 miesiące", 
 					offers: [
 						{ id: "standard", name: "FON DOMOWY",
+							clientTypes: ["new", "existing"],
+							regulations: [
+								{name: "Regulamin Fon Domowy 08-26.pdf",
+									url: "regulaminy/telefon stacjonarny/Fon Domowy 08-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -9730,7 +10533,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -9811,6 +10614,12 @@ const catalog = {
 				{ id: "12", type: "fixed", months: 12, name: "12 miesiące", 
 					offers: [
 						{ id: "standard", name: "SMART TV",
+							clientTypes: ["existing"],
+							regulations: [
+								{ name: "Regulamin Open TV",
+									url: "regulaminy/opentv/Open TV 08-25.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -9819,7 +10628,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:12, price:3.69 }
+										{ from:1, to:12, price:7.39 }
 									]
 								}
 							],
@@ -9903,6 +10712,12 @@ const catalog = {
 				{ id: "24", type: "fixed", months: 24, name: "24 miesiące", 
 					offers: [
 						{ id: "standard", name: "SMART TV",
+							clientTypes: ["existing"],
+							regulations: [
+								{ name: "Regulamin Open TV",
+									url: "regulaminy/opentv/Open TV 08-25.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -9911,7 +10726,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -9995,6 +10810,12 @@ const catalog = {
 				{ id: "indefinite", type: "indefinite", months:null, name: "Bez okresu zobowiązania", 
 					offers: [
 						{ id: "standard", name: "SMART TV",
+							clientTypes: ["existing"],
+							regulations: [
+								{ name: "Regulamin Open TV",
+									url: "regulaminy/opentv/Open TV 08-25.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -10003,7 +10824,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:null, price:3.69 }
+										{ from:1, to:null, price:7.39 }
 									]
 								}
 							],
@@ -10091,6 +10912,12 @@ const catalog = {
 				{ id: "24", type: "fixed", months: 24, name: "24 miesiące", 
 					offers: [
 						{ id: "standard", name: "Net Radiowy",
+							clientTypes: ["new", "existing"],
+							regulations: [
+								{ name: "Regulamin Net Radiowy Priv",
+									url: "regulaminy/internet radiowy/Net Radiowy Priv 08-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -10099,7 +10926,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -10116,7 +10943,7 @@ const catalog = {
 									options: [
 									],
 								},
-								{ id: "radio_40", name: "Internet radiowy 30/6 Mb/s",
+								{ id: "radio_30", name: "Internet radiowy 30/6 Mb/s",
 									 components: [
 										{ name: "Internet radiowy 30/6 Mb/s", 
 											activationFee: 49.75,
@@ -10139,6 +10966,12 @@ const catalog = {
 				{ id: "12", type: "fixed", months: 12, name: "12 miesięcy", 
 					offers: [
 						{ id: "dodatkowe_urzadzenie", name: "Dodatkowe Urządzenie",
+							clientTypes: ["new", "existing"],
+							regulations: [
+								{ name: "Regulamin Dodatkowe Urządzenie - Multiroom",
+									url: "regulaminy/dodatkowe urządzenia/Dodatkowe Urządzenie - Multiroom 08-25.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -10147,7 +10980,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:12, price:3.69 }
+										{ from:1, to:12, price:7.39 }
 									]
 								}
 							],
@@ -10179,6 +11012,12 @@ const catalog = {
 							]
 						},
 						{ id: "dodatkowe_urzadzenie_stop", name: "Dodatkowe Urządzenie STOP",
+							clientTypes: ["existing"],
+							regulations: [
+								{ name: "Regulamin Dodatkowe Urządzenie - Multiroom STOP",
+									url: "regulaminy/dodatkowe urządzenia/Dodatkowe Urządzenie - Multiroom STOP 02-26.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -10187,7 +11026,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:12, price:3.69 }
+										{ from:1, to:12, price:7.39 }
 									]
 								}
 							],
@@ -10223,6 +11062,15 @@ const catalog = {
 				{ id: "24", type: "fixed", months: 24, name: "24 miesiące", 
 					offers: [
 						{ id: "dodatkowe_urzadzenie", name: "Dodatkowe Urządzenie",
+							clientTypes: ["new", "existing"],
+							regulations: [
+								{ name: "Regulamin Dodatkowe Urządzenie - Multiroom",
+									url: "regulaminy/dodatkowe urządzenia/Dodatkowe Urządzenie - Multiroom 08-25.pdf"
+								},
+								{ name: "Regulamin Multiscreen MR - SMART TV",
+									url: "regulaminy/dodatkowe urządzenia/Multiscreen MR - SMART TV 08-25.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -10231,7 +11079,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -10303,6 +11151,15 @@ const catalog = {
 							]
 						},
 						{ id: "dodatkowe_urzadzenie_stop", name: "Dodatkowe Urządzenie STOP",
+							clientTypes: ["existing"],
+							regulations: [
+								{ name: "Regulamin Dodatkowe Urządzenie - Multiroom STOP",
+									url: "regulaminy/dodatkowe urządzenia/Dodatkowe Urządzenie - Multiroom STOP 02-26.pdf"
+								},
+								{ name: "Regulamin Multiscreen MR - SMART TV",
+									url: "regulaminy/dodatkowe urządzenia/Multiscreen MR - SMART TV 08-25.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -10311,7 +11168,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
@@ -10383,6 +11240,12 @@ const catalog = {
 							]
 						},
 						{ id: "multiscreen", name: "Multiscreen N-MR",
+							clientTypes: ["existing"],
+							regulations: [
+								{ name: "Regulamin Multiscreen N-MR - SMART TV",
+									url: "regulaminy/dodatkowe urządzenia/Multiscreen N-MR - SMART TV 08-25.pdf"
+								},
+							],
 							globalFees:[
 								{ id:"remote_support", name:"Wsparcie zdalne usługi",
 									priceSchedule:[
@@ -10391,7 +11254,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:3.69 }
+										{ from:1, to:24, price:7.39 }
 									]
 								}
 							],
