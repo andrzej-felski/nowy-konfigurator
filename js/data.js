@@ -1554,7 +1554,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:7.39 }
+										{ from:1, to:24, price:3.69 }
 									]
 								}
 							],
@@ -1678,7 +1678,7 @@ const catalog = {
 								},
 								{ id:"telecom_fee", name:"Opłata telekomunikacyjna",
 									priceSchedule:[
-										{ from:1, to:24, price:7.39 }
+										{ from:1, to:24, price:3.69 }
 									]
 								}
 							],
