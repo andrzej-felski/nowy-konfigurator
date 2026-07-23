@@ -140,23 +140,25 @@ function renderServices(){
     stepContent.innerHTML += `
         <div class="choice-list">
             ${
-                catalog.services.map(service => {
-                    const enabled = hasAvailablePackages(service);
-                    return `
-                        <label class="choice-card ${!enabled ? "choice-disabled" : ""}">
-                            <input
-                                type="radio"
-                                name="service"
-                                value="${service.id}"
-                                ${selectedServiceId === service.id ? "checked" : ""}
-                                ${!enabled ? "disabled" : ""}
-                            >
-                            <span class="choice-name">
-                                ${service.name}
-                            </span>
-                        </label>
-                    `;
-                }).join("")
+				catalog.services.map(service => {
+					const disabled =
+						!hasAvailablePackages(service) ||
+						(lockedContractId && !isServiceAvailable(service));
+					return `
+						<label class="choice-card ${disabled ? "choice-disabled" : ""}">
+							<input
+								type="radio"
+								name="service"
+								value="${service.id}"
+								${selectedServiceId === service.id ? "checked" : ""}
+								${disabled ? "disabled" : ""}
+							>
+							<span class="choice-name">
+								${service.name}
+							</span>
+						</label>
+					`;
+				}).join("")
             }
         </div>
     `;
@@ -241,23 +243,25 @@ function renderContracts(){
     stepContent.innerHTML += `
         <div class="choice-list">
         ${
-			service.contracts.map(contract=>{
-				const enabled = hasAvailablePackagesForContract(contract);
+			service.contracts.map(contract => {
+				const disabled =
+					!hasAvailablePackagesForContract(contract) ||
+					(lockedContractId && contract.id !== lockedContractId);
 				return `
-				<label class="choice-card ${!enabled ? "choice-disabled" : ""}">
-					<input
-						type="radio"
-						name="contract"
-						value="${contract.id}"
-						${selectedContractId === contract.id ? "checked" : ""}
-						${!enabled ? "disabled" : ""}
-					/>
-					<span class="choice-name">
-						${contract.name}
-					</span>
-				</label>
+					<label class="choice-card ${disabled ? "choice-disabled" : ""}">
+						<input
+							type="radio"
+							name="contract"
+							value="${contract.id}"
+							${selectedContractId === contract.id ? "checked" : ""}
+							${disabled ? "disabled" : ""}
+						/>
+						<span class="choice-name">
+							${contract.name}
+						</span>
+					</label>
 				`;
-				}).join("")
+			}).join("")
         }
         </div>
     `;
