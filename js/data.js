@@ -3653,8 +3653,7 @@ const catalog = {
 										{ id: "modem_2", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
-												{ from: 1, to: 3, price: 0.00 },
-												{ from: 4, to: 24, price: 1.27 }
+												{ from: 1, to: 24, price: 1.27 }
 											]
 										},
 										{ id: "modem_3", name: "Modem", group:"modemy",
@@ -3686,8 +3685,7 @@ const catalog = {
 										{ id: "modem_2", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
-												{ from: 1, to: 3, price: 0.00 },
-												{ from: 4, to: 24, price: 1.27 }
+												{ from: 1, to: 24, price: 1.27 }
 											]
 										},
 										{ id: "modem_3", name: "Modem", group:"modemy",
@@ -5724,8 +5722,7 @@ const catalog = {
 										{ id: "modem_2", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
-												{ from: 1, to: 1, price: 0.09 },
-												{ from: 2, to: 10, price: 1.27 }
+												{ from: 1, to: 10, price: 1.27 }
 											]
 										},
 										{ id: "modem_3", name: "Modem", group:"modemy",
@@ -5898,11 +5895,16 @@ const catalog = {
 										{ id: "modem_2", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
-												{ from: 1, to: 1, price: 0.00 },
-												{ from: 2, to: 12, price: 1.27 }
+												{ from: 1, to: 12, price: 5.39 }
 											]
 										},
 										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 12, price: 1.27 }
+											]
+										},
+										{ id: "modem_4", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 12, price: 0.00 }
@@ -6198,8 +6200,7 @@ const catalog = {
 										{ id: "modem_2", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
-												{ from: 1, to: 3, price: 0.09 },
-												{ from: 4, to: 24, price: 1.27 }
+												{ from: 1, to: 24, price: 1.27 }
 											]
 										},
 										{ id: "modem_3", name: "Modem", group:"modemy",
@@ -6393,11 +6394,16 @@ const catalog = {
 										{ id: "modem_2", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
-												{ from: 1, to: 1, price: 0.00 },
-												{ from: 2, to: 24, price: 1.27 }
+												{ from: 1, to: 24, price: 5.39 }
 											]
 										},
 										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_4", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 0.00 }
@@ -6426,11 +6432,16 @@ const catalog = {
 										{ id: "modem_2", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
-												{ from: 1, to: 1, price: 0.00 },
-												{ from: 2, to: 24, price: 1.27 }
+												{ from: 1, to: 24, price: 5.39 }
 											]
 										},
 										{ id: "modem_3", name: "Modem", group:"modemy",
+											selectedByDefault: false,
+											priceSchedule: [
+												{ from: 1, to: 24, price: 1.27 }
+											]
+										},
+										{ id: "modem_4", name: "Modem", group:"modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 0.00 }
