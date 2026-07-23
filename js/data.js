@@ -222,20 +222,20 @@ const catalog = {
 												{ from:1, to:12, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
 												{ from: 1, to: 12, price: 38.00 },
 											]
 										},
-										{ id:"hbo_hd_max", name:"HBO Max", dependsOn:"hbo_hd",
+										{ id:"hbo_hd_max", name:"HBO Max", dependsOn:"hbo_hd", 
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 12, price: 5.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -358,7 +358,7 @@ const catalog = {
 												{ from:1, to:12, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -371,7 +371,7 @@ const catalog = {
 												{ from: 1, to: 12, price: 5.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -494,7 +494,7 @@ const catalog = {
 												{ from:1, to:12, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -507,7 +507,7 @@ const catalog = {
 												{ from: 1, to: 12, price: 5.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -595,7 +595,7 @@ const catalog = {
 												{ from:1, to:12, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -608,7 +608,7 @@ const catalog = {
 												{ from: 1, to: 12, price: 5.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -819,7 +819,7 @@ const catalog = {
 												{ from:1, to:12, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -832,7 +832,7 @@ const catalog = {
 												{ from: 1, to: 12, price: 5.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -955,7 +955,7 @@ const catalog = {
 												{ from:1, to:12, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -968,7 +968,7 @@ const catalog = {
 												{ from: 1, to: 12, price: 5.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -1091,7 +1091,7 @@ const catalog = {
 												{ from:1, to:12, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -1104,7 +1104,7 @@ const catalog = {
 												{ from: 1, to: 12, price: 5.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -1192,7 +1192,7 @@ const catalog = {
 												{ from:1, to:12, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -1205,7 +1205,7 @@ const catalog = {
 												{ from: 1, to: 12, price: 5.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -1347,7 +1347,7 @@ const catalog = {
 												{ from:1, to:12, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -1360,7 +1360,7 @@ const catalog = {
 												{ from: 1, to: 12, price: 5.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -1462,7 +1462,7 @@ const catalog = {
 												{ from:1, to:12, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -1475,7 +1475,7 @@ const catalog = {
 												{ from: 1, to: 12, price: 5.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -2007,7 +2007,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -2020,7 +2020,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -2156,7 +2156,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -2169,7 +2169,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -2410,7 +2410,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -2423,7 +2423,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -2561,7 +2561,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -2574,7 +2574,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -2712,7 +2712,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -2725,7 +2725,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -2828,7 +2828,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -2841,7 +2841,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -3043,7 +3043,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -3056,7 +3056,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -3173,7 +3173,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -3186,7 +3186,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -3303,7 +3303,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -3316,7 +3316,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -3398,7 +3398,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -3411,7 +3411,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -4314,7 +4314,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -4327,7 +4327,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -4465,7 +4465,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -4478,7 +4478,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -4616,7 +4616,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -4629,7 +4629,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -4732,7 +4732,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -4745,7 +4745,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -4935,7 +4935,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -4948,7 +4948,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -5065,7 +5065,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -5078,7 +5078,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -5195,7 +5195,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -5208,7 +5208,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -5290,7 +5290,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -5303,7 +5303,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -7053,7 +7053,7 @@ const catalog = {
 												{ from:1, to:12, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -7066,7 +7066,7 @@ const catalog = {
 												{ from: 1, to: 12, price: 5.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -7189,7 +7189,7 @@ const catalog = {
 												{ from:1, to:12, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -7202,7 +7202,7 @@ const catalog = {
 												{ from: 1, to: 12, price: 5.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -7325,7 +7325,7 @@ const catalog = {
 												{ from:1, to:12, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -7338,7 +7338,7 @@ const catalog = {
 												{ from: 1, to: 12, price: 5.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -7426,7 +7426,7 @@ const catalog = {
 												{ from:1, to:12, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -7439,7 +7439,7 @@ const catalog = {
 												{ from: 1, to: 12, price: 5.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -7552,7 +7552,7 @@ const catalog = {
 												{ from:1, to:12, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -7565,7 +7565,7 @@ const catalog = {
 												{ from: 1, to: 12, price: 5.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -7688,7 +7688,7 @@ const catalog = {
 												{ from:1, to:12, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -7701,7 +7701,7 @@ const catalog = {
 												{ from: 1, to: 12, price: 5.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -7824,7 +7824,7 @@ const catalog = {
 												{ from:1, to:12, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -7837,7 +7837,7 @@ const catalog = {
 												{ from: 1, to: 12, price: 5.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -7925,7 +7925,7 @@ const catalog = {
 												{ from:1, to:12, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -7938,7 +7938,7 @@ const catalog = {
 												{ from: 1, to: 12, price: 5.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -8030,7 +8030,7 @@ const catalog = {
 												{ from:1, to:12, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -8043,7 +8043,7 @@ const catalog = {
 												{ from: 1, to: 12, price: 5.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -8145,7 +8145,7 @@ const catalog = {
 												{ from:1, to:12, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -8158,7 +8158,7 @@ const catalog = {
 												{ from: 1, to: 12, price: 5.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -8260,7 +8260,7 @@ const catalog = {
 												{ from:1, to:12, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -8273,7 +8273,7 @@ const catalog = {
 												{ from: 1, to: 12, price: 5.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -8393,7 +8393,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -8406,7 +8406,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -8544,7 +8544,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -8557,7 +8557,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -8695,7 +8695,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -8709,7 +8709,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -8812,7 +8812,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -8825,7 +8825,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -9390,7 +9390,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -9403,7 +9403,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -9541,7 +9541,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -9554,7 +9554,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -9692,7 +9692,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -9706,7 +9706,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -9809,7 +9809,7 @@ const catalog = {
 												{ from:1, to:24, price:65.00 }
 											]
 										},
-										{ id:"hbo_hd", name:"HBO HD",
+										{ id:"hbo_hd", name:"HBO HD", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
@@ -9822,7 +9822,7 @@ const catalog = {
 												{ from: 1, to: 24, price: 1.90 },
 											]
 										},
-										{ id:"hbo_max", name:"HBO Max (solo)",
+										{ id:"hbo_max", name:"HBO Max (solo)", group:"hbo",
 											selectedByDefault: false,
 											activationFee: 1.23,
 											priceSchedule: [
