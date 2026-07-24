@@ -6,38 +6,53 @@ function calculatePackage(pkg, contract, cart = []) {
 			cart
 		);
 	let monthly = [];
-    let activationFee = 0;
-    for (let month = 1; month <= months; month++) {
-        let price = 0;
-        (pkg.components || []).forEach(component => {
-            price += getPriceForMonth(
-                component.priceSchedule,
-                month
-            );
-        });
-        (pkg.options || []).forEach(option => {
-            if(option.selected) {
-                price += getPriceForMonth(
-                    option.priceSchedule,
-                    month
-                );
-            }
-        });
-        monthly.push(price);
-    }
-    (pkg.components || []).forEach(component => {
-        activationFee += component.activationFee || 0;
-    });
-    (pkg.options || []).forEach(option => {
-        if(option.selected) {
-            activationFee += option.activationFee || 0;
-        }
-    });
-    monthly[0] += activationFee;
-    return {
-        monthly,
-        activationFee
-    };
+	let activationFee = 0;
+	let activationItems = [];
+	for (let month = 1; month <= months; month++) {
+		let price = 0;
+		(pkg.components || []).forEach(component => {
+			price += getPriceForMonth(
+				component.priceSchedule,
+				month
+			);
+		});
+		(pkg.options || []).forEach(option => {
+			if(option.selected) {
+				price += getPriceForMonth(
+					option.priceSchedule,
+					month
+				);
+			}
+		});
+		monthly.push(price);
+	}
+	(pkg.components || []).forEach(component => {
+		const fee = component.activationFee || 0;
+		activationFee += fee;
+		if(fee > 0){
+			activationItems.push({
+				name: component.name,
+				price: fee
+			});
+		}
+	});
+	(pkg.options || []).forEach(option => {
+		if(option.selected) {
+			const fee = option.activationFee || 0;
+			activationFee += fee;
+			if(fee > 0){
+				activationItems.push({
+					name: option.name,
+					price: fee
+				});
+			}
+		}
+	});
+	return {
+		monthly,
+		activationFee,
+		activationItems
+	};
 }
 
 function getPriceForMonth(schedule, month) {
@@ -89,7 +104,6 @@ function getLowestGlobalFees(cart, months) {
                 fees[fee.id] = Array(months).fill(null);
             }
             for(let month = 1; month <= months; month++){
-
                 const scheduleItem = fee.priceSchedule?.find(x =>
                     month >= x.from &&
                     (x.to === null || month <= x.to)
@@ -97,7 +111,6 @@ function getLowestGlobalFees(cart, months) {
                 if(!scheduleItem){
                     continue;
                 }
-
                 const price = scheduleItem.price;
                 const index = month - 1;
 
@@ -157,11 +170,15 @@ function calculateCart(cart, globalOptions = []) {
         );
         activation += calculation.activationFee;
     });
-    const globalFees =
-        getLowestGlobalFees(
-            cart,
-            months
-        );
+	const globalFees =
+		getLowestGlobalFees(
+			cart,
+			months
+		);
+	const feeSummary = {};
+	Object.entries(globalFees).forEach(([id, values]) => {
+		feeSummary[id] = values[0] ?? 0;
+	});
     Object.values(globalFees)
         .forEach(feeMonthly=>{
             feeMonthly.forEach((price,index)=>{
@@ -177,10 +194,11 @@ function calculateCart(cart, globalOptions = []) {
                 total[i]+=option.price;
             }
         });
-    return {
-        monthly: total.map(x=>Number(x.toFixed(2))),
-        activationFee:Number(activation.toFixed(2))
-    };
+	return {
+		monthly: total.map(x=>Number(x.toFixed(2))),
+		activationFee:Number(activation.toFixed(2)),
+		fees: feeSummary
+	};
 }
 
 function calculateCartItem(item, cart = []){
