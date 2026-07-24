@@ -194,8 +194,13 @@ function calculateCart(cart, globalOptions = []) {
                 total[i]+=option.price;
             }
         });
+	total = total.map(x =>
+		Number(
+			Math.max(0, x).toFixed(2)
+		)
+	);
 	return {
-		monthly: total.map(x=>Number(x.toFixed(2))),
+		monthly: total,
 		activationFee:Number(activation.toFixed(2)),
 		fees: feeSummary
 	};
