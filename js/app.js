@@ -933,7 +933,9 @@ function renderCart(){
 				}
 				<strong>Dodatki:</strong>
 				${
-					selectedOptions.map(option => {
+					selectedOptions.length === 0
+					? " brak <br>"
+					: selectedOptions.map(option => {
 						const optionMonths = getCalculationMonths(
 							item.package,
 							contract,
@@ -965,6 +967,7 @@ function renderCart(){
 									${
 										groupedOption.map((x,index)=>{
 											let price = formatPrice(x.price);
+
 											if(index === 0 && option.activationFee){
 												price =
 													`${formatPrice(x.price - option.activationFee)}
