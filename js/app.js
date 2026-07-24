@@ -616,12 +616,12 @@ function isOptionAllowed(option) {
 
 function formatScheduleRange(item){
     if(item.to === null){
-        return `od ${item.from} mies.`;
+        return `od ${item.from} miesiąca:`;
     }
     if(item.from === item.to){
-        return `${item.from} mies.`;
+        return `${item.from} miesiąc:`;
     }
-    return `${item.from}-${item.to} mies.`;
+    return `${item.from}-${item.to} miesiąc:`;
 }
 
 function renderSummary() {
@@ -769,7 +769,7 @@ function renderGlobalOptions(){
 						option.price > 0
 						? "+" + formatPrice(option.price)
 						: formatPrice(option.price)
-					} zł / mies.
+					} / miesiąc
 				</span>
 			</label>
 		`).join("")
@@ -818,10 +818,35 @@ function renderCart(){
             );
 		let calculation =
 			calculateCartItem(item, cart);
+		const packageOnly = structuredClone(item.package);
+		(packageOnly.options || []).forEach(option => {
+			option.selected = false;
+		});
+		const packageCalculation = calculatePackage(
+			packageOnly,
+			contract,
+			cart
+		);
+		const packageMonthlyWithActivation =
+			packageCalculation.monthly.map((price, index) =>
+				index === 0
+					? price + packageCalculation.activationFee
+					: price
+			);
+		const groupedPackage = groupMonths(
+			packageMonthlyWithActivation,
+			contract.type === "indefinite"
+		);
 		const indefinite =
 			contract.type === "indefinite";
+		const monthlyWithActivation =
+			calculation.monthly.map((price, index) =>
+				index === 0
+					? price + calculation.activationFee
+					: price
+			);
 		let grouped = groupMonths(
-			calculation.monthly,
+			monthlyWithActivation,
 			contract.type === "indefinite"
 		);
 		if (
@@ -844,10 +869,9 @@ function renderCart(){
 				}
 			];
 		}
-        const selectedOptions =
-            (item.package.options || [])
-            .filter(option => option.selected)
-            .map(option => option.name);
+		const selectedOptions =
+			(item.package.options || [])
+			.filter(option => option.selected);
         cartDiv.innerHTML += `
         <div class="cart-item" data-id="${item.cartItemId}">
             <div class="cart-header" onclick="toggleCartItem(this)">
@@ -871,32 +895,100 @@ function renderCart(){
                     offer.id !== "standard"
                     ?
                     `
-                    Oferta:
+                    <strong>Oferta:</strong>
                     ${offer.name}
                     <br>
                     `
                     :
                     ""
                 }
-                Umowa:
+                <strong>Umowa:</strong>
                 ${contract.name}
                 <br>
-                Dodatki:
-                ${
-                    selectedOptions.length
-                    ?
-                    selectedOptions.join(", ")
-                    :
-                    "brak"
-                }
-				<br><br>
+				<strong>Koszt usługi:</strong>
+				<br>
+				${
+					groupedPackage.map((x, index) => {
+						const basePrice =
+							index === 0
+								? x.price - packageCalculation.activationFee
+								: x.price;
+						let price = formatPrice(basePrice);
+						if (index === 0 && packageCalculation.activationFee) {
+							price += ` + ${formatPrice(packageCalculation.activationFee)} za aktywację`;
+							price += ` = ${formatPrice(x.price)}`;
+						}
+						return `
+							${formatMonthRange(x)}:
+							${price}
+							<br>
+						`;
+					}).join("")
+				}
+				<strong>Dodatki:</strong>
+				${
+					selectedOptions.map(option => {
+						const optionMonths = getCalculationMonths(
+							item.package,
+							contract,
+							cart
+						);
+						const optionMonthly = [];
+						for(let month = 1; month <= optionMonths; month++){
+							optionMonthly.push(
+								getPriceForMonth(
+									option.priceSchedule,
+									month
+								)
+							);
+						}
+						if(option.activationFee){
+							optionMonthly[0] += option.activationFee;
+						}
+						const groupedOption = groupMonths(
+							optionMonthly,
+							contract.type === "indefinite"
+						);
+						return `
+							<div class="option-item">
+								<div class="option-header" onclick="toggleOption(this)">
+									<span>${option.name}</span>
+									<span class="option-arrow">▼</span>
+								</div>
+								<div class="option-content">
+									${
+										groupedOption.map((x,index)=>{
+											let price = formatPrice(x.price);
+											if(index === 0 && option.activationFee){
+												price =
+													`${formatPrice(x.price - option.activationFee)}
+													+ ${formatPrice(option.activationFee)} za aktywację
+													= ${formatPrice(x.price)}`;
+											}
+											return `
+												${formatMonthRange(x)}:
+												${price}
+												<br>
+											`;
+										}).join("")
+									}
+								</div>
+							</div>
+						`;
+					}).join("")
+				}
+				<br>
+				<strong>Harmonogram opłat miesięcznych:</strong>
+				<br>
 				${grouped.map((x,index)=>{
-					let price = formatPrice(x.price);
-					if(
-						index === 0 &&
-						calculation.activationFee
-					){
-						price += ` (w tym ${formatPrice(calculation.activationFee)} za aktywację)`;
+					const basePrice =
+						index === 0
+							? x.price - calculation.activationFee
+							: x.price;
+					let price = formatPrice(basePrice);
+					if (index === 0 && calculation.activationFee) {
+						price += ` + ${formatPrice(calculation.activationFee)} za aktywację`;
+						price += ` = ${formatPrice(x.price)}`;
 					}
 					return `
 						${
@@ -942,19 +1034,24 @@ function renderCart(){
             cart,
             selectedGlobalOptions
         );
-		const summaryGrouped =
-			groupMonths(
-				summary.monthly,
-				cart.some(item => {
-					const service =
-						catalog.services.find(x => x.id === item.serviceId);
+	const summaryWithActivation =
+		summary.monthly.map((price, index) =>
+			index === 0
+				? price + summary.activationFee
+				: price
+		);
+	const summaryGrouped = groupMonths(
+		summaryWithActivation,
+		cart.some(item => {
+			const service =
+				catalog.services.find(x => x.id === item.serviceId);
 
-					const contract =
-						service.contracts.find(x => x.id === item.contractId);
+			const contract =
+				service.contracts.find(x => x.id === item.contractId);
 
-					return contract.type === "indefinite";
-				})
-			);
+			return contract.type === "indefinite";
+		})
+	);
     cartDiv.innerHTML += `
     <hr>
     `;
@@ -964,13 +1061,17 @@ function renderCart(){
     <h2>
         Podsumowanie
     </h2>
+	<strong>Harmonogram opłat miesięcznych:</strong>
+	<br>
 	${summaryGrouped.map((x,index)=>{
-		let price = formatPrice(x.price);
-		if(
-			index === 0 &&
-			summary.activationFee
-		){
-			price += ` (w tym ${formatPrice(summary.activationFee)} za aktywację)`;
+		const basePrice =
+			index === 0
+				? x.price - summary.activationFee
+				: x.price;
+		let price = formatPrice(basePrice);
+		if (index === 0 && summary.activationFee) {
+			price += ` + ${formatPrice(summary.activationFee)} za aktywację`;
+			price += ` = ${formatPrice(x.price)}`;
 		}
 		return `
 			${
@@ -980,6 +1081,36 @@ function renderCart(){
 			<br>
 		`;
 	}).join("")}
+	<hr>
+	<div class="price-details">
+		<strong>Podane ceny zawierają:</strong>
+		<br>
+		${
+			Object.entries(summary.fees || {})
+			.map(([id, price]) => {
+				const fee = cart
+					.flatMap(item => item.offer?.globalFees || [])
+					.find(x => x.id === id);
+
+				return `
+					${fee?.name || id}:
+					${formatPrice(price)}
+					<br>
+				`;
+			})
+			.join("")
+		}
+		${
+			selectedGlobalOptions
+			.filter(option => option.selected)
+			.map(option => `
+				${option.name}:
+				${formatPrice(option.price)}
+				<br>
+			`)
+			.join("")
+		}
+	</div>
     <br>
     <button id="pdfButton">
         Zapisz PDF
@@ -1014,6 +1145,24 @@ function renderCart(){
         content.offsetHeight;
         content.style.transition = "";
     });
+}
+
+function toggleOption(header){
+    const item = header.parentElement;
+    const content = item.querySelector(".option-content");
+    item.classList.toggle("open");
+    if(item.classList.contains("open")){
+        content.style.maxHeight = content.scrollHeight + "px";
+    }else{
+        content.style.maxHeight = "0";
+    }
+    const cartContent = item.closest(".cart-content");
+    if(cartContent){
+        content.addEventListener("transitionend", () => {
+            cartContent.style.maxHeight =
+                cartContent.scrollHeight + "px";
+        }, { once:true });
+    }
 }
 
 function formatMonthRange(item){
@@ -1271,10 +1420,20 @@ function toggleCartItem(header){
         openItem.classList.remove("open");
         const openContent = openItem.querySelector(".cart-content");
         openContent.style.maxHeight = "0px";
+        openItem.querySelectorAll(".option-item.open")
+            .forEach(optionItem => {
+                optionItem.classList.remove("open");
+                const optionContent =
+                    optionItem.querySelector(".option-content");
+                if(optionContent){
+                    optionContent.style.maxHeight = "0px";
+                }
+            });
     });
     if (isOpening) {
         item.classList.add("open");
-        content.style.maxHeight = content.scrollHeight + "px";
+        content.style.maxHeight =
+            content.scrollHeight + "px";
         openedCartItems = [item.dataset.id];
     } else {
         openedCartItems = [];
@@ -1358,11 +1517,9 @@ function exportCartToPDF(){
             );
         const calculation =
             calculateCartItem(item);
-        const options =
-            (item.package.options || [])
-            .filter(x=>x.selected)
-            .map(x=>x.name)
-            .join(", ");
+		const options =
+			(item.package.options || [])
+			.filter(x=>x.selected);
         let rows = [];
         rows.push([
             {
@@ -1383,13 +1540,138 @@ function exportCartToPDF(){
             "Umowa",
             contract.name
         ]);
-        rows.push([
-            "Dodatki",
-            options || "brak"
-        ]);
+		const packageOnly = structuredClone(item.package);
+		(packageOnly.options || []).forEach(option => {
+			option.selected = false;
+		});
+		const packageCalculation = calculatePackage(
+			packageOnly,
+			contract,
+			cart
+		);
+		const packageMonthlyWithActivation =
+			packageCalculation.monthly.map((price, index) =>
+				index === 0
+					? price + packageCalculation.activationFee
+					: price
+			);
+		rows.push([
+			{
+				content: "Koszt usługi",
+				colSpan: 2,
+				styles: {
+					fillColor: [224,243,255],
+					textColor: [0,0,0],
+					fontStyle: "bold",
+					fontSize: 11,
+					halign: "center",
+					cellPadding: 1.5
+				}
+			}
+		]);
+		groupMonths(
+			packageMonthlyWithActivation,
+			contract.type === "indefinite"
+		).forEach((x, index) => {
+			const basePrice =
+				index === 0
+					? x.price - packageCalculation.activationFee
+					: x.price;
+			let price = formatPrice(basePrice);
+			if (index === 0 && packageCalculation.activationFee) {
+				price += ` + ${formatPrice(packageCalculation.activationFee)} za aktywację`;
+				price += ` = ${formatPrice(x.price)}`;
+			}
+			rows.push([
+				x.to === null
+					? `od ${x.from} miesiąca`
+					: x.from === x.to
+						? `${x.from} miesiąc`
+						: `${x.from}-${x.to} miesiąc`,
+				price
+			]);
+		});
+		rows.push([
+			{
+				content:"Dodatki",
+				colSpan:2,
+				styles:{
+					fillColor:[224,243,255],
+					textColor:[0,0,0],
+					fontStyle:"bold",
+					fontSize:11,
+					halign:"center",
+					cellPadding:1.5
+				}
+			}
+		]);
+		if(options.length === 0){
+			rows.push([
+				"brak",
+				""
+			]);
+		}
+		else {
+			options.forEach(option => {
+				rows.push([
+					{
+						content: option.name,
+						colSpan:2,
+						styles:{
+							fontStyle:"bold"
+						}
+					}
+				]);
+				const optionMonths =
+					getCalculationMonths(
+						item.package,
+						contract,
+						cart
+					);
+				const optionMonthly = [];
+				for(let month = 1; month <= optionMonths; month++){
+					optionMonthly.push(
+						getPriceForMonth(
+							option.priceSchedule,
+							month
+						)
+					);
+				}
+				if (option.activationFee) {
+					optionMonthly[0] += option.activationFee;
+				}
+				groupMonths(
+					optionMonthly,
+					contract.type === "indefinite"
+				)
+				.forEach((x,index)=>{
+					const basePrice =
+						index === 0
+							? x.price - (option.activationFee || 0)
+							: x.price;
+					let price = formatPrice(basePrice);
+					if (index === 0 && option.activationFee) {
+						price += ` + ${formatPrice(option.activationFee)} za aktywację`;
+						price += ` = ${formatPrice(x.price)}`;
+					}
+					rows.push([
+						x.to === null
+						?
+						`od ${x.from} miesiąca`
+						:
+						x.from === x.to
+						?
+						`${x.from} miesiąc`
+						:
+						`${x.from}-${x.to} miesiąc`,
+						price
+					]);
+				});
+			});
+		}
         rows.push([
             {
-                content:"Opłaty",
+                content:"Suma opłat",
                 colSpan:2,
                 styles:{
 					fillColor:[224,243,255],
@@ -1401,21 +1683,27 @@ function exportCartToPDF(){
                 }
             }
         ]);
+		const monthlyWithActivation =
+			calculation.monthly.map((price, index) =>
+				index === 0
+					? price + calculation.activationFee
+					: price
+			);
 		groupMonths(
-			calculation.monthly,
+			monthlyWithActivation,
 			contract.type === "indefinite"
 		)
 		.forEach((x,index)=>{
-			let price =
-				formatPrice(x.price);
-			if(
-				index === 0 &&
-				calculation.activationFee
-			){
-				price +=
-				` (w tym ${formatPrice(calculation.activationFee)} za aktywację)`;
+			const basePrice =
+				index === 0
+					? x.price - calculation.activationFee
+					: x.price;
+			let price = formatPrice(basePrice);
+			if (index === 0 && calculation.activationFee) {
+				price += ` + ${formatPrice(calculation.activationFee)} za aktywację`;
+				price += ` = ${formatPrice(x.price)}`;
 			}
-            rows.push([
+			rows.push([
 				x.to === null
 				?
 				`od ${x.from} miesiąca`
@@ -1425,9 +1713,9 @@ function exportCartToPDF(){
 				`${x.from} miesiąc`
 				:
 				`${x.from}-${x.to} miesiąc`,
-                price
-            ]);
-        });
+				price
+			]);
+		});
         doc.autoTable({
             startY:y,
             theme:"grid",
@@ -1455,9 +1743,15 @@ function exportCartToPDF(){
             cart,
             selectedGlobalOptions
         );
+	const summaryWithActivation =
+		summary.monthly.map((price, index) =>
+			index === 0
+				? price + summary.activationFee
+				: price
+		);
 	const summaryGrouped =
 		groupMonths(
-			summary.monthly,
+			summaryWithActivation,
 			cart.some(item => {
 				const service =
 					catalog.services.find(x => x.id === item.serviceId);
@@ -1474,7 +1768,7 @@ function exportCartToPDF(){
     summaryRows.push([
         {
             content:
-            "Koszt umowy - zawiera opłatę telekomunikacyjną oraz opłatę za wsparcie zdalne usługi",
+            "Ile zapłacisz w poszczególnych miesiącach",
             colSpan:2,
             styles:{
 				fillColor:[12,37,63],
@@ -1486,26 +1780,18 @@ function exportCartToPDF(){
             }
         }
     ]);
-    selectedGlobalOptions
-    .filter(option=>option.selected)
-    .forEach(option=>{
-        summaryRows.push([
-            option.name,
-            `${option.price} zł / mies.`
-        ]);
-    });
-    summaryRows.push(
-        ...summaryGrouped.map((x,index)=>{
-            let price =
-                formatPrice(x.price);
-            if(
-                index === 0 &&
-                summary.activationFee
-            ){
-                price +=
-                ` (w tym ${formatPrice(summary.activationFee)} zł za aktywację)`;
-            }
-            return [
+	summaryRows.push(
+		...summaryGrouped.map((x,index)=>{
+			const basePrice =
+				index === 0
+					? x.price - summary.activationFee
+					: x.price;
+			let price = formatPrice(basePrice);
+			if (index === 0 && summary.activationFee) {
+				price += ` + ${formatPrice(summary.activationFee)} zł za aktywację`;
+				price += ` = ${formatPrice(x.price)} zł`;
+			}
+			return [
 				x.to === null
 				?
 				`od ${x.from} miesiąca`
@@ -1515,10 +1801,49 @@ function exportCartToPDF(){
 				`${x.from} miesiąc`
 				:
 				`${x.from}-${x.to} miesiąc`,
-                price
-            ];
-        })
-    );
+				price
+			];
+		})
+	);
+	summaryRows.push([
+		{
+			content: "Podane ceny zawierają",
+			colSpan: 2,
+			styles: {
+				fillColor: [224,243,255],
+				textColor: [0,0,0],
+				fontStyle: "bold",
+				fontSize: 11,
+				halign: "center",
+				cellPadding: 1.5
+			}
+		}
+	]);
+	const globalFees = getLowestGlobalFees(
+		cart,
+		summary.monthly.length
+	);
+	Object.entries(globalFees).forEach(([id, values]) => {
+		const fee = cart
+			.flatMap(item => item.offer?.globalFees || [])
+			.find(x => x.id === id);
+
+		if (!fee) {
+			return;
+		}
+		summaryRows.push([
+			fee.name,
+			formatPrice(values[0] ?? 0)
+		]);
+	});
+	selectedGlobalOptions
+		.filter(option => option.selected)
+		.forEach(option => {
+			summaryRows.push([
+				option.name,
+				`${formatPrice(option.price)}`
+			]);
+		});
     doc.autoTable({
         startY:y,
         theme:"grid",
