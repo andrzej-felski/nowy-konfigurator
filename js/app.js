@@ -759,17 +759,23 @@ function renderGlobalOptions(){
 					data-global-id="${option.id}"
 					${option.selected ? "checked" : ""}
 				>
-
 				<span class="option-name">
 					${option.name}
 				</span>
-
 				<span class="option-price">
 					${
-						option.price > 0
-						? "+" + formatPrice(option.price)
-						: formatPrice(option.price)
-					} / miesiąc
+						option.priceSchedule
+						?
+						option.priceSchedule
+							.map(x => `${formatScheduleRange(x)} ${formatPrice(x.price)}`)
+							.join("<br>")
+						:
+						(
+							option.price > 0
+							? "+" + formatPrice(option.price)
+							: formatPrice(option.price)
+						) + " / miesiąc"
+					}
 				</span>
 			</label>
 		`).join("")
@@ -1061,7 +1067,7 @@ function renderCart(){
     <h2>
         Podsumowanie
     </h2>
-	<strong>Harmonogram opłat miesięcznych:</strong>
+	<strong><span style="font-size:1.2em">Harmonogram opłat miesięcznych:</span></strong>
 	<br>
 	${summaryGrouped.map((x,index)=>{
 		const basePrice =
@@ -1083,30 +1089,80 @@ function renderCart(){
 	}).join("")}
 	<hr>
 	<div class="price-details">
-		<strong>Podane ceny zawierają:</strong>
+		<strong><span style="font-size:1.2em">Podane ceny zawierają:</span></strong>
 		<br>
 		${
-			Object.entries(summary.fees || {})
-			.map(([id, price]) => {
-				const fee = cart
-					.flatMap(item => item.offer?.globalFees || [])
-					.find(x => x.id === id);
-
-				return `
-					${fee?.name || id}:
-					${formatPrice(price)}
+			cart
+			.flatMap(item => item.offer?.globalFees || [])
+			.filter((fee,index,self)=>
+				self.findIndex(x=>x.id===fee.id)===index
+			)
+			.map(fee=>`
+				<div class="fee-item">
+					<strong>${fee.name}</strong>
 					<br>
-				`;
-			})
+					${
+						getFeeSchedule(
+							fee,
+							summary.monthly.length,
+							cart.some(item => {
+								const service =
+									catalog.services.find(
+										x => x.id === item.serviceId
+									);
+
+								const contract =
+									service.contracts.find(
+										x => x.id === item.contractId
+									);
+
+								return contract.type === "indefinite";
+							})
+						)
+						.map(x=>`
+							${formatMonthRange(x)}:
+							${formatPrice(x.price)}
+							<br>
+						`)
+						.join("")
+					}
+				</div>
+			`)
 			.join("")
 		}
 		${
 			selectedGlobalOptions
 			.filter(option => option.selected)
 			.map(option => `
-				${option.name}:
-				${formatPrice(option.price)}
-				<br>
+				<div class="fee-item">
+					<strong>${option.name}</strong>
+					<br>
+					${
+						getFeeSchedule(
+							option,
+							summary.monthly.length,
+							cart.some(item => {
+								const service =
+									catalog.services.find(
+										x => x.id === item.serviceId
+									);
+
+								const contract =
+									service.contracts.find(
+										x => x.id === item.contractId
+									);
+
+								return contract.type === "indefinite";
+							})
+						)
+						.map(x=>`
+							${formatMonthRange(x)}:
+							${formatPrice(x.price)}
+							<br>
+						`)
+						.join("")
+					}
+				</div>
 			`)
 			.join("")
 		}
@@ -1307,6 +1363,23 @@ function resetConfigurator(){
 	lastSelectedRadioByGroup = {};
     currentStep = 1;
     renderStep();
+}
+
+function getFeeSchedule(fee, months, indefinite = false){
+	const monthly = [];
+	for(let month = 1; month <= months; month++){
+		let price = 0;
+		if(fee.priceSchedule){
+			price = getPriceForMonth(
+				fee.priceSchedule,
+				month
+			);
+		}else{
+			price = fee.price || 0;
+		}
+		monthly.push(price);
+	}
+	return groupMonths(monthly, indefinite);
 }
 
 backButton.addEventListener(
@@ -1823,26 +1896,77 @@ function exportCartToPDF(){
 		cart,
 		summary.monthly.length
 	);
-	Object.entries(globalFees).forEach(([id, values]) => {
+	Object.entries(globalFees).forEach(([id]) => {
 		const fee = cart
 			.flatMap(item => item.offer?.globalFees || [])
 			.find(x => x.id === id);
-
 		if (!fee) {
 			return;
 		}
 		summaryRows.push([
-			fee.name,
-			formatPrice(values[0] ?? 0)
+			{
+				content: fee.name,
+				colSpan:2,
+				styles:{
+					fontStyle:"bold"
+				}
+			}
 		]);
+		getFeeSchedule(
+			fee,
+			summary.monthly.length,
+			cart.some(item => {
+				const service =
+					catalog.services.find(
+						x => x.id === item.serviceId
+					);
+				const contract =
+					service.contracts.find(
+						x => x.id === item.contractId
+					);
+				return contract.type === "indefinite";
+			})
+		)
+		.forEach(x=>{
+			summaryRows.push([
+				formatMonthRange(x),
+				formatPrice(x.price)
+			]);
+		});
 	});
 	selectedGlobalOptions
 		.filter(option => option.selected)
 		.forEach(option => {
 			summaryRows.push([
-				option.name,
-				`${formatPrice(option.price)}`
+				{
+					content: option.name,
+					colSpan: 2,
+					styles:{
+						fontStyle:"bold"
+					}
+				}
 			]);
+			getFeeSchedule(
+				option,
+				summary.monthly.length,
+				cart.some(item => {
+					const service =
+						catalog.services.find(
+							x => x.id === item.serviceId
+						);
+					const contract =
+						service.contracts.find(
+							x => x.id === item.contractId
+						);
+					return contract.type === "indefinite";
+				})
+			)
+			.forEach(x => {
+				summaryRows.push([
+					formatMonthRange(x),
+					formatPrice(x.price)
+				]);
+			});
 		});
     doc.autoTable({
         startY:y,
