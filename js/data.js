@@ -10,21 +10,21 @@ const catalog = {
 		}
 	],
     globalOptions: [
+        { id: "house_fee",  name: "Opłata dla domów jednorodzinnych",
+            selectedByDefault: false,
+            price: 11.85
+        },
         { id: "e_faktura", name: "Zgoda na e-fakturę",
             selectedByDefault: false,
             price: -5.00
         },
-        { id: "house_fee",  name: "Opłata dla domów jednorodzinnych",
-            selectedByDefault: false,
-            price: 11.85
-        }
     ],
 	services: [
 		{ id: "packages", name: "Pakiety",
 			contracts: [
 				{ id: "12", type: "fixed", months: 12, name: "12 miesięcy",
 					offers: [
-						{ id: "standard", name: "Super Box",
+						{ id: "super_box", name: "Super Box",
 							clientTypes: ["new"],
 							regulations: [
 								{ name: "Regulamin Super Box + SMART TV",
@@ -2209,7 +2209,7 @@ const catalog = {
 								},
 							]
 						},
-						{ id: "standard", name: "Super Box",
+						{ id: "super_box", name: "Super Box",
 							clientTypes: ["new"],
 							regulations: [
 								{ name: "Regulamin Super Box + SMART TV",
@@ -5814,7 +5814,7 @@ const catalog = {
 								},
 							]
 						},
-						{ id: "standard", name: "Super Net",
+						{ id: "super_net", name: "Super Net",
 							clientTypes: ["new"],
 							regulations: [
 								{ name: "Regulamin Super Net",
@@ -6313,7 +6313,7 @@ const catalog = {
 								},
 							]
 						},
-						{ id: "standard", name: "Super Net",
+						{ id: "super_net", name: "Super Net",
 							clientTypes: ["new"],
 							regulations: [
 								{ name: "Regulamin Super Net",
@@ -6699,13 +6699,13 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "dzierzawa_modemu_lte", name: "Dzierżawa Modemu LTE",
+										{ id: "dzierzawa_modemu_lte", name: "Dzierżawa Modemu LTE", group: "modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 12, price: 15.00 }
 											]
 										},
-										{ id: "zakup_modemu_lte", name: "Zakup Modemu LTE",
+										{ id: "zakup_modemu_lte", name: "Zakup Modemu LTE", group: "modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 1, price: 250.00 }
@@ -6723,13 +6723,13 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "dzierzawa_modemu_lte", name: "Dzierżawa Modemu LTE",
+										{ id: "dzierzawa_modemu_lte", name: "Dzierżawa Modemu LTE", group: "modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 12, price: 15.00 }
 											]
 										},
-										{ id: "zakup_modemu_lte", name: "Zakup Modemu LTE",
+										{ id: "zakup_modemu_lte", name: "Zakup Modemu LTE", group: "modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 1, price: 250.00 }
@@ -6747,13 +6747,13 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "dzierzawa_modemu_lte", name: "Dzierżawa Modemu LTE",
+										{ id: "dzierzawa_modemu_lte", name: "Dzierżawa Modemu LTE", group: "modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 12, price: 15.00 }
 											]
 										},
-										{ id: "zakup_modemu_lte", name: "Zakup Modemu LTE",
+										{ id: "zakup_modemu_lte", name: "Zakup Modemu LTE", group: "modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 1, price: 250.00 }
@@ -6771,13 +6771,13 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "dzierzawa_modemu_lte", name: "Dzierżawa Modemu LTE",
+										{ id: "dzierzawa_modemu_lte", name: "Dzierżawa Modemu LTE", group: "modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 12, price: 15.00 }
 											]
 										},
-										{ id: "zakup_modemu_lte", name: "Zakup Modemu LTE",
+										{ id: "zakup_modemu_lte", name: "Zakup Modemu LTE", group: "modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 1, price: 250.00 }
@@ -6795,13 +6795,13 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "dzierzawa_modemu_lte", name: "Dzierżawa Modemu LTE",
+										{ id: "dzierzawa_modemu_lte", name: "Dzierżawa Modemu LTE", group: "modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 12, price: 15.00 }
 											]
 										},
-										{ id: "zakup_modemu_lte", name: "Zakup Modemu LTE",
+										{ id: "zakup_modemu_lte", name: "Zakup Modemu LTE", group: "modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 1, price: 250.00 }
@@ -6845,13 +6845,13 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "dzierzawa_modemu_lte", name: "Dzierżawa Modemu LTE",
+										{ id: "dzierzawa_modemu_lte", name: "Dzierżawa Modemu LTE", group: "modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 15.00 }
 											]
 										},
-										{ id: "zakup_modemu_lte", name: "Zakup Modemu LTE",
+										{ id: "zakup_modemu_lte", name: "Zakup Modemu LTE", group: "modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 1, price: 250.00 }
@@ -6869,13 +6869,13 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "dzierzawa_modemu_lte", name: "Dzierżawa Modemu LTE",
+										{ id: "dzierzawa_modemu_lte", name: "Dzierżawa Modemu LTE", group: "modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 15.00 }
 											]
 										},
-										{ id: "zakup_modemu_lte", name: "Zakup Modemu LTE",
+										{ id: "zakup_modemu_lte", name: "Zakup Modemu LTE", group: "modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 1, price: 250.00 }
@@ -6893,13 +6893,13 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "dzierzawa_modemu_lte", name: "Dzierżawa Modemu LTE",
+										{ id: "dzierzawa_modemu_lte", name: "Dzierżawa Modemu LTE", group: "modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 15.00 }
 											]
 										},
-										{ id: "zakup_modemu_lte", name: "Zakup Modemu LTE",
+										{ id: "zakup_modemu_lte", name: "Zakup Modemu LTE", group: "modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 1, price: 250.00 }
@@ -6917,13 +6917,13 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "dzierzawa_modemu_lte", name: "Dzierżawa Modemu LTE",
+										{ id: "dzierzawa_modemu_lte", name: "Dzierżawa Modemu LTE", group: "modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 15.00 }
 											]
 										},
-										{ id: "zakup_modemu_lte", name: "Zakup Modemu LTE",
+										{ id: "zakup_modemu_lte", name: "Zakup Modemu LTE", group: "modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 1, price: 250.00 }
@@ -6941,13 +6941,13 @@ const catalog = {
 										}
 									],
 									options: [
-										{ id: "dzierzawa_modemu_lte", name: "Dzierżawa Modemu LTE",
+										{ id: "dzierzawa_modemu_lte", name: "Dzierżawa Modemu LTE", group: "modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 24, price: 15.00 }
 											]
 										},
-										{ id: "zakup_modemu_lte", name: "Zakup Modemu LTE",
+										{ id: "zakup_modemu_lte", name: "Zakup Modemu LTE", group: "modemy",
 											selectedByDefault: false,
 											priceSchedule: [
 												{ from: 1, to: 1, price: 250.00 }
@@ -6965,7 +6965,7 @@ const catalog = {
 			contracts: [
 				{ id: "12", type: "fixed", months: 12, name: "12 miesięcy", 
 					offers: [
-						{ id: "standard", name: "Super TV",
+						{ id: "super_tv", name: "Super TV",
 							clientTypes: ["new"],
 							regulations: [
 								{ name: "Regulamin Super TV + SMART TV",
@@ -8302,7 +8302,7 @@ const catalog = {
 				},
 				{ id: "24", type: "fixed", months: 24, name: "24 miesiące", 
 					offers: [
-						{ id: "standard", name: "Super TV",
+						{ id: "super_tv", name: "Super TV",
 							clientTypes: ["new"],
 							regulations: [
 								{ name: "Regulamin Super TV + SMART TV",
@@ -10324,7 +10324,7 @@ const catalog = {
 			contracts: [
 				{ id: "24", type: "fixed", months: 24, name: "24 miesiące", 
 					offers: [
-						{ id: "standard", name: "FON MOBIL",
+						{ id: "fon_mobil", name: "FON MOBIL",
 							clientTypes: ["new", "existing"],
 							regulations: [
 								{ name: "Regulamin Fon Mobil",
@@ -10529,7 +10529,7 @@ const catalog = {
 			contracts: [
 				{ id: "24", type: "fixed", months: 24, name: "24 miesiące", 
 					offers: [
-						{ id: "standard", name: "FON DOMOWY",
+						{ id: "fon_domowy", name: "FON DOMOWY",
 							clientTypes: ["new", "existing"],
 							regulations: [
 								{name: "Regulamin Fon Domowy 08-26.pdf",
@@ -10624,7 +10624,7 @@ const catalog = {
 			contracts: [
 				{ id: "12", type: "fixed", months: 12, name: "12 miesiące", 
 					offers: [
-						{ id: "standard", name: "SMART TV",
+						{ id: "smart_tv", name: "SMART TV",
 							clientTypes: ["existing"],
 							regulations: [
 								{ name: "Regulamin Open TV",
@@ -10722,7 +10722,7 @@ const catalog = {
 				},
 				{ id: "24", type: "fixed", months: 24, name: "24 miesiące", 
 					offers: [
-						{ id: "standard", name: "SMART TV",
+						{ id: "smart_tv", name: "SMART TV",
 							clientTypes: ["existing"],
 							regulations: [
 								{ name: "Regulamin Open TV",
@@ -10820,7 +10820,7 @@ const catalog = {
 				},
 				{ id: "indefinite", type: "indefinite", months:null, name: "Bez okresu zobowiązania", 
 					offers: [
-						{ id: "standard", name: "SMART TV",
+						{ id: "smart_tv", name: "SMART TV",
 							clientTypes: ["existing"],
 							regulations: [
 								{ name: "Regulamin Open TV",
@@ -10922,7 +10922,7 @@ const catalog = {
 			contracts: [
 				{ id: "24", type: "fixed", months: 24, name: "24 miesiące", 
 					offers: [
-						{ id: "standard", name: "Net Radiowy",
+						{ id: "net_radiowy", name: "Net Radiowy",
 							clientTypes: ["new", "existing"],
 							regulations: [
 								{ name: "Regulamin Net Radiowy Priv",
